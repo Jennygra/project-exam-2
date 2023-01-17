@@ -1,0 +1,16 @@
+.color-nav {
+  background-color: $colour-primary;
+
+  a {
+    color: $colour-secondary;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $colour-ui-primary;
+    }
+  }
+}
+
+.logo-nav {
+  max-height: 3rem;
+}

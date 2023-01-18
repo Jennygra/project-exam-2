@@ -1,12 +1,11 @@
-body {
-  margin: 0;
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
   max-width: 90%;
   margin: 0 auto;
-}
-
-.body-container {
-  height: 100vh;
+  flex-grow: 1;
 }

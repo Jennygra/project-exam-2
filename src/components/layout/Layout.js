@@ -40,7 +40,7 @@ function Layout() {
         </Container>
       </Navbar>
 
-      <Container className="body-container">
+      <Container>
         <Routes>
           <Route path="/" exact element={<Landingsite />} />
           <Route path="/login" element={<Login />} />

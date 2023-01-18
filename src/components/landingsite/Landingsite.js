@@ -1,5 +1,5 @@
 import Banner from "./Banner";
-import Register from "../register/Register";
+import RegisterForm from "../register/RegisterForm";
 
 function Landingsite() {
   return (
@@ -11,7 +11,7 @@ function Landingsite() {
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
         commodo consequat.
       </p>
-      <Register />
+      <RegisterForm />
     </>
   );
 }

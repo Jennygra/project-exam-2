@@ -1,7 +1,15 @@
 .footer-bar {
   background-color: $colour-primary;
+  margin-top: 6rem;
+
+  img {
+    max-height: 2rem;
+  }
 
   p {
-    color: $colour-shades-dark;
+    color: $colour-shades-light;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8rem;
   }
 }

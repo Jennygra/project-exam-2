@@ -19,7 +19,7 @@ import Register from "../register/Register";
 function Layout() {
   return (
     <Router>
-      <Navbar className="color-nav" variant="dark" expand="md">
+      <Navbar className="nav-bar" variant="dark" expand="md">
         <Container>
           <NavLink to="/" exact>
             <Navbar.Brand to="/" className="nav-link">
@@ -39,13 +39,27 @@ function Layout() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Container>
+
+      <Container className="body-container">
         <Routes>
           <Route path="/" exact element={<Landingsite />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </Container>
+
+      <footer>
+        <Navbar className="footer-bar" variant="dark" expand="md">
+          <Container>
+            <NavLink to="/" exact>
+              <Navbar.Brand to="/" className="nav-link">
+                <img className="logo-nav" src={logo} alt="Addie logo"></img>
+              </Navbar.Brand>
+            </NavLink>
+            <p>&copy; AdD. 2023. All rights reserved.</p>
+          </Container>
+        </Navbar>
+      </footer>
     </Router>
   );
 }

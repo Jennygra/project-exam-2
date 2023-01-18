@@ -1,10 +1,10 @@
-import banner from "../../images/landingsite-banner.png";
+import img from "../../images/landingsite-banner.png";
 
 function Banner() {
   return (
-    <div>
+    <div className="landingsite-banner">
       <img
-        src={banner}
+        src={img}
         alt="Share, connect, discover. Dont miss out, register now!"
       />
     </div>

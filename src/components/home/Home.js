@@ -1,8 +1,19 @@
+import ProfileList from "../profiles/ProfileList";
+import Banner from "./Banner";
+
 function Home() {
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <>
+      <Banner />
+
+      <div>
+        <ProfileList />
+      </div>
+
+      <div>
+        <h2>Posts</h2>
+      </div>
+    </>
   );
 }
 

@@ -11,8 +11,8 @@ import { Form, Button } from "react-bootstrap";
 const url = BASE_URL + LOGIN_PATH;
 
 const schema = yup.object().shape({
-  username: yup.string().required("Incorrect email"),
-  password: yup.string().required("Incorrect password"),
+  email: yup.string().required("Please fill out email"),
+  password: yup.string().required("Please fill out password"),
 });
 
 function LoginForm() {
@@ -56,7 +56,7 @@ function LoginForm() {
         <Form.Group>
           <Form.Label>Email</Form.Label>
           <Form.Control {...register("email", { required: true })} />
-          {errors.username && <div>{errors.username.message}</div>}
+          {errors.email && <div>{errors.email.message}</div>}
         </Form.Group>
         <br />
         <Form.Group>

@@ -11,7 +11,7 @@ import logo from "../../images/logo.png";
 import Landingsite from "../landingsite/Landingsite";
 import Login from "../login/Login";
 import Register from "../register/Register";
-// import Home from "../home/Home";
+import Home from "../home/Home";
 // import Posts from "../posts/Posts";
 // import Profiles from "../profiles/Profile";
 // import PersonalProfile from "../personalProfile/PersonalProfile";
@@ -45,6 +45,10 @@ function Layout() {
           <Route path="/" exact element={<Landingsite />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/home" element={<Home />} />
+          {/* <Route path="/posts" element={<Posts />} />
+          <Route path="/profiles" element={<Profiles />} />
+          <Route path="/personalprofile" element={<PersonalProfile />} /> */}
         </Routes>
       </Container>
 

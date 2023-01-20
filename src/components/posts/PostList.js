@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { BASE_URL, POSTS_PATH } from "../../constants/api/Api";
-import Spinner from "react-bootstrap/Spinner";
+import { Spinner, Figure } from "react-bootstrap";
 
 const postApi = BASE_URL + POSTS_PATH;
 

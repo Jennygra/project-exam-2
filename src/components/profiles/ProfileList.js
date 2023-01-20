@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { BASE_URL, PROFILE_PATH } from "../../constants/api/Api";
 import { Spinner, Button, Figure } from "react-bootstrap";
 

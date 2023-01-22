@@ -28,7 +28,7 @@ function LoginForm() {
     resolver: yupResolver(schema),
   });
 
-  const [, setAuth] = useContext(AuthContext);
+  const [auth, setAuth] = useContext(AuthContext);
 
   async function onSubmit(data) {
     setSubmitting(true);

@@ -1,26 +1,21 @@
 import { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
-import { BASE_URL, PROFILE_PATH } from "../../constants/api/Api";
+import { PROFILE_PATH } from "../../constants/api/Api";
 import { Spinner, Button, Figure } from "react-bootstrap";
-
-const profileApi = BASE_URL + PROFILE_PATH;
 
 function ProfileList() {
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const http = useAxios();
+
   useEffect(() => {
     (async function fetchData() {
       try {
-        const response = await fetch(profileApi);
-
-        if (response.ok) {
-          const json = await response.json();
-          setProfiles(json);
-        } else {
-          setError("An error occured");
-        }
+        const response = await http.get(PROFILE_PATH);
+        console.log("reponse:", response.data);
+        setProfiles(response.data);
       } catch (error) {
         setError(error.toString());
       } finally {
@@ -44,7 +39,7 @@ function ProfileList() {
 
   return (
     <>
-      {profiles.map((profile) => (
+      {profiles.slice(0, 10).map((profile) => (
         <Figure>
           <Figure.Image
             width={171}

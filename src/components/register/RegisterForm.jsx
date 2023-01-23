@@ -1,11 +1,10 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { BASE_URL, REGISTER_PATH } from "../../constants/api/Api";
-import AuthContext from "../../context/AuthContext/authContext";
 import { Form, Button } from "react-bootstrap";
 
 const url = BASE_URL + REGISTER_PATH;
@@ -45,15 +44,12 @@ function RegisterForm() {
     resolver: yupResolver(schema),
   });
 
-  const [, setAuth] = useContext(AuthContext);
-
   async function onSubmit(data) {
     setSubmitting(true);
     setResgisterError(null);
 
     try {
       const response = await axios.post(url, data);
-      setAuth(response.data);
       console.log("response", response.data);
       navigate("/login");
     } catch (error) {

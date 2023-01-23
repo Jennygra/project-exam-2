@@ -1,4 +1,4 @@
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext/authContext";
@@ -45,10 +45,18 @@ function Navigation() {
                 <NavLink to="/profiles" className="nav-link">
                   Profiles
                 </NavLink>
-                <NavLink to="/personalprofile" className="nav-link">
-                  Hi User
-                </NavLink>
-                <button onClick={logout}>Log out</button>
+                <NavDropdown
+                  className="nav-bar_dropdown"
+                  title="Hi User"
+                  id="basic-nav-dropdown"
+                >
+                  <NavDropdown.Item href="/personalprofile">
+                    Profile
+                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={logout} href="/">
+                    Log out
+                  </NavDropdown.Item>
+                </NavDropdown>
               </>
             ) : (
               <>

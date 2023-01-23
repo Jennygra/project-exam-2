@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import useAxios from "../../hooks/useAxios";
 import { BASE_URL, PROFILE_PATH } from "../../constants/api/Api";
 import { Spinner, Button, Figure } from "react-bootstrap";
 

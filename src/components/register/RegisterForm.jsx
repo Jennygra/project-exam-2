@@ -66,7 +66,7 @@ function RegisterForm() {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      {resgisterError && <div>Login failed; Invalid username or password.</div>}
+      {resgisterError && <div>Register failed; profile already exist.</div>}
       <fieldset disabled={submitting}>
         <Form.Group>
           <Form.Label>Name</Form.Label>

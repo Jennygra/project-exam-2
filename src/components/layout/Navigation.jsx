@@ -16,11 +16,24 @@ function Navigation() {
   return (
     <Navbar className="nav-bar" variant="dark" expand="md">
       <Container>
-        <NavLink to="/" exact>
-          <Navbar.Brand to="/" className="nav-link">
-            <img className="logo-nav" src={logo} alt="Addie logo"></img>
-          </Navbar.Brand>
-        </NavLink>
+        {auth ? (
+          <>
+            <NavLink to="/home" exact>
+              <Navbar.Brand to="/home" className="nav-link">
+                <img className="logo-nav" src={logo} alt="Addie logo"></img>
+              </Navbar.Brand>
+            </NavLink>
+          </>
+        ) : (
+          <>
+            <NavLink to="/" exact>
+              <Navbar.Brand to="/" className="nav-link">
+                <img className="logo-nav" src={logo} alt="Addie logo"></img>
+              </Navbar.Brand>
+            </NavLink>
+          </>
+        )}
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto justify-content-end">

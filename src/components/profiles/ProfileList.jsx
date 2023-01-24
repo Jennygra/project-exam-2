@@ -14,7 +14,6 @@ function ProfileList() {
     (async function fetchData() {
       try {
         const response = await http.get(PROFILE_PATH);
-        console.log("reponse:", response.data);
         setProfiles(response.data);
       } catch (error) {
         setError(error.toString());
@@ -42,8 +41,8 @@ function ProfileList() {
       {profiles.slice(0, 10).map((profile) => (
         <Figure>
           <Figure.Image
-            width={171}
-            height={180}
+            width={100}
+            height={100}
             alt={profile.name}
             src={profile.avatar}
           />

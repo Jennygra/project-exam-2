@@ -1,25 +1,21 @@
 import { useState, useEffect } from "react";
-import { BASE_URL, POSTS_PATH } from "../../constants/api/Api";
-import { Spinner, Figure } from "react-bootstrap";
-
-const postApi = BASE_URL + POSTS_PATH;
+import useAxios from "../../hooks/useAxios";
+import { POSTS_PATH } from "../../constants/api/Api";
+import { Spinner, Card, Button } from "react-bootstrap";
 
 function PostList() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const http = useAxios();
+
   useEffect(() => {
     (async function fetchData() {
       try {
-        const response = await fetch(postApi);
-
-        if (response.ok) {
-          const json = await response.json();
-          setPosts(json);
-        } else {
-          setError("An error occured");
-        }
+        const response = await http.get(POSTS_PATH);
+        console.log("reponse:", response.data);
+        setPosts(response.data);
       } catch (error) {
         setError(error.toString());
       } finally {
@@ -43,16 +39,14 @@ function PostList() {
 
   return (
     <>
-      {posts.map((post) => (
-        <Figure>
-          <Figure.Image
-            width={171}
-            height={180}
-            alt={post.title}
-            src={post.media}
-          />
-          <Figure.Caption>{post.title}</Figure.Caption>
-        </Figure>
+      {posts.slice(0, 10).map((post) => (
+        <Card style={{ width: "18rem" }}>
+          <Card.Img variant="top" src={post.media} />
+          <Card.Body>
+            <Card.Title>Username</Card.Title>
+            <Card.Text>{post.title}</Card.Text>
+          </Card.Body>
+        </Card>
       ))}
     </>
   );

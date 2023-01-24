@@ -15,6 +15,7 @@ function PostList() {
       try {
         const response = await http.get(POSTS_PATH);
         setPosts(response.data);
+        console.log(response.data);
       } catch (error) {
         setError(error.toString());
       } finally {
@@ -39,11 +40,11 @@ function PostList() {
   return (
     <>
       {posts.slice(0, 10).map((post) => (
-        <Card style={{ width: "18rem" }}>
+        <Card className="posts-item">
           <Card.Img variant="top" src={post.media} />
           <Card.Body>
-            <Card.Title>Username</Card.Title>
-            <Card.Text>{post.title}</Card.Text>
+            <Card.Title>{post.title}</Card.Title>
+            <Card.Text>{post.body}</Card.Text>
           </Card.Body>
         </Card>
       ))}

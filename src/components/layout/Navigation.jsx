@@ -11,11 +11,13 @@ function Navigation() {
   const navigate = useNavigate();
 
   function logout() {
-    setAuth(null);
-    navigate.push("/");
-  }
+    const doLogout = window.confirm("You sure you want to log out?");
 
-  console.log(auth.name);
+    if (doLogout) {
+      setAuth(null);
+      navigate.push("/");
+    }
+  }
 
   return (
     <Navbar className="nav-bar" variant="dark" expand="md">

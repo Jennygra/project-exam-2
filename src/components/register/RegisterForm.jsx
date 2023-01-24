@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -34,12 +33,13 @@ const schema = yup.object().shape({
 function RegisterForm() {
   const [submitting, setSubmitting] = useState(false);
   const [resgisterError, setResgisterError] = useState(null);
-  const navigate = useNavigate();
+  const [submitSuccessful, setSubmit] = useState(false);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { errors, isSubmitSuccessful },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -51,7 +51,6 @@ function RegisterForm() {
     try {
       const response = await axios.post(url, data);
       console.log("response", response.data);
-      navigate("/login");
     } catch (error) {
       console.log("error", error);
       setResgisterError(error.toString());
@@ -60,9 +59,22 @@ function RegisterForm() {
     }
   }
 
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      setSubmit(true);
+      reset();
+    }
+  }, [isSubmitSuccessful, reset]);
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       {resgisterError && <div>Register failed; profile already exist.</div>}
+      {submitSuccessful && (
+        <div>
+          Profile was made, please go to{" "}
+          <a href="/login">login page to login</a>
+        </div>
+      )}
       <fieldset disabled={submitting}>
         <Form.Group>
           <Form.Label>Name</Form.Label>

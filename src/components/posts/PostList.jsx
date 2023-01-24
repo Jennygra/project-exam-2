@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 import { POSTS_PATH } from "../../constants/api/Api";
-import { Spinner, Card, Button } from "react-bootstrap";
+import { Spinner, Card } from "react-bootstrap";
 
 function PostList() {
   const [posts, setPosts] = useState([]);
@@ -14,7 +14,6 @@ function PostList() {
     (async function fetchData() {
       try {
         const response = await http.get(POSTS_PATH);
-        console.log("reponse:", response.data);
         setPosts(response.data);
       } catch (error) {
         setError(error.toString());

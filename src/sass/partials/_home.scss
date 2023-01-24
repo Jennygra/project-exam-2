@@ -7,3 +7,27 @@
 .homepage-posts_container {
   margin: 2rem auto;
 }
+
+.homepage-profiles_wrapper {
+  display: flex;
+  gap: 3.5rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  text-align: center;
+
+  .profile-img_wrapper {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  button {
+    border-radius: 0% !important;
+  }
+}

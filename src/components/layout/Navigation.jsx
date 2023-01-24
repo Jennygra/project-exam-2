@@ -2,7 +2,9 @@ import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext/authContext";
+import checkImg from "../../context/CheckImg";
 import logo from "../../images/logo.png";
+import profileImgDefault from "../../images/default-user-img.jpg";
 
 function Navigation() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -12,6 +14,8 @@ function Navigation() {
     setAuth(null);
     navigate.push("/");
   }
+
+  console.log(auth.name);
 
   return (
     <Navbar className="nav-bar" variant="dark" expand="md">
@@ -46,8 +50,16 @@ function Navigation() {
                   Profiles
                 </NavLink>
                 <NavDropdown
-                  className="nav-bar_dropdown"
-                  title="Hi User"
+                  className="nav-bar_dropdown nav-bar_dropdown-container"
+                  title={
+                    <div className="nav-dropdown_user-wrapper">
+                      <div className="nav-dropdown_user-img">
+                        <img src={checkImg(auth.avatar, profileImgDefault)} />
+                      </div>
+
+                      {auth.name}
+                    </div>
+                  }
                   id="basic-nav-dropdown"
                 >
                   <NavDropdown.Item href="/personalprofile">

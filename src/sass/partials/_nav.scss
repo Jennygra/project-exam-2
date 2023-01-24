@@ -10,6 +10,31 @@
       color: $colour-ui-primary;
     }
   }
+
+  .nav-bar_dropdown-container a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .nav-dropdown_user-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav-dropdown_user-img {
+    width: 1.5rem;
+    height: 1.5rem;
+    overflow: hidden;
+    border-radius: 50%;
+    box-sizing: border-box;
+
+    img {
+      width: 100%;
+    }
+  }
 }
 
 .logo-nav {

@@ -9,12 +9,16 @@ function Home() {
 
       <div className="homepage-profiles_container">
         <h2>Profiles</h2>
-        <ProfileList />
+        <div className="homepage-profiles_wrapper">
+          <ProfileList />
+        </div>
       </div>
 
       <div className="homepage-posts_container">
         <h2>Posts</h2>
-        <PostList />
+        <div className="homepage-posts_wrapper">
+          <PostList />
+        </div>
       </div>
     </>
   );

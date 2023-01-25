@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { POSTS_PATH } from "../../constants/api/Api";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Button } from "react-bootstrap";
 import GetComment from "./GetComment";
+import AddComment from "./AddComment";
 import checkImg from "../../context/CheckImg";
 import defaultPostImg from "../../images/no-img.jpg";
 import defaultProfileImg from "../../images/default-user-img.jpg";
@@ -12,6 +13,7 @@ function Post() {
   const [post, setPost] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [modalShow, setModalShow] = useState(false);
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -50,8 +52,6 @@ function Post() {
     return <div>ERROR: An error occured</div>;
   }
 
-  console.log(post.author.avatar);
-
   return (
     <>
       <div className="post-container">
@@ -84,10 +84,12 @@ function Post() {
           <div>
             <GetComment />
             <div>
-              <button onClick="">
+              <Button variant="outline-dark" onClick={() => setModalShow(true)}>
                 <i class="fa-regular fa-plus"></i>
                 Write a comment
-              </button>
+              </Button>
+
+              <AddComment show={modalShow} onHide={() => setModalShow(false)} />
             </div>
           </div>
 

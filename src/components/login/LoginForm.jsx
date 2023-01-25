@@ -18,6 +18,7 @@ const schema = yup.object().shape({
 function LoginForm() {
   const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
+  const [auth, setAuth] = useContext(AuthContext);
   const navigate = useNavigate();
 
   const {
@@ -27,8 +28,6 @@ function LoginForm() {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
-  const [auth, setAuth] = useContext(AuthContext);
 
   async function onSubmit(data) {
     setSubmitting(true);

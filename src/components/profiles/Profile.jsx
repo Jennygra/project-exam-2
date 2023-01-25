@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { PROFILE_PATH } from "../../constants/api/Api";
 import ProfilePosts from "./ProfilePosts";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Button } from "react-bootstrap";
 import checkImg from "../../context/CheckImg";
 import defaultProfileImg from "../../images/default-user-img.jpg";
 import defaultBannerImg from "../../images/no-img.jpg";
@@ -65,6 +65,7 @@ function Profile() {
         <div className="profile-detail_wrapper">
           <div className="profile-tilte_wrapper">
             <h4>{profile.name}</h4>
+            <Button variant="dark">Follow</Button>
           </div>
 
           <div className="profile-counts_item">

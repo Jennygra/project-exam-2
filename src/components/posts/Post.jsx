@@ -6,6 +6,7 @@ import { Spinner } from "react-bootstrap";
 import GetComment from "./GetComment";
 import checkImg from "../../context/CheckImg";
 import defaultPostImg from "../../images/no-img.jpg";
+import defaultProfileImg from "../../images/default-user-img.jpg";
 
 function Post() {
   const [post, setPost] = useState([]);
@@ -14,7 +15,8 @@ function Post() {
 
   const navigate = useNavigate();
   const { id } = useParams();
-  const url = POSTS_PATH + "/" + id;
+  const url =
+    POSTS_PATH + "/" + id + "?_author=true&_comments=true&_reactions=true";
 
   const http = useAxios();
 
@@ -48,6 +50,8 @@ function Post() {
     return <div>ERROR: An error occured</div>;
   }
 
+  console.log(post.author.avatar);
+
   return (
     <>
       <div className="post-container">
@@ -56,8 +60,18 @@ function Post() {
         </div>
 
         <div className="post-container_details-wrapper">
-          <h4>{post.title}</h4>
-          <p>{post.body}</p>
+          <div className="post-container_details_img">
+            <img
+              src={checkImg(post.author.avatar, defaultProfileImg)}
+              alt="#"
+            ></img>
+          </div>
+
+          <div>
+            <h4>{post.author.name}</h4>
+            <h6>{post.title}</h6>
+            <p>{post.body}</p>
+          </div>
         </div>
 
         <hr />
@@ -69,9 +83,15 @@ function Post() {
 
           <div>
             <GetComment />
+            <div>
+              <button>
+                <i class="fa-regular fa-plus"></i>
+                Write a comment
+              </button>
+            </div>
           </div>
 
-          <div>
+          <div className="post-container_icons-wrapper">
             <i class="fa-regular fa-face-smile"></i>
             <i class="fa-regular fa-share-from-square"></i>
           </div>

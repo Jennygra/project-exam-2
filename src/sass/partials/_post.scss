@@ -2,6 +2,23 @@
   margin-top: 3rem;
 }
 
+.post-container_details_img {
+  width: 5rem;
+  height: 5rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.post-container_details-wrapper {
+  display: flex;
+  margin: 1rem auto;
+}
+
 .post-container_img-wrapper {
   width: 40rem;
   height: 40rem;
@@ -15,4 +32,16 @@
     object-fit: cover;
     object-position: center;
   }
+}
+
+.post-container_comment-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.post-container_icons-wrapper {
+  display: flex;
+  gap: 1rem;
 }

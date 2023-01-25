@@ -67,7 +67,7 @@ function Post() {
             ></img>
           </div>
 
-          <div>
+          <div className="post-container_details_titles">
             <h4>{post.author.name}</h4>
             <h6>{post.title}</h6>
             <p>{post.body}</p>
@@ -84,7 +84,7 @@ function Post() {
           <div>
             <GetComment />
             <div>
-              <button>
+              <button onClick="">
                 <i class="fa-regular fa-plus"></i>
                 Write a comment
               </button>

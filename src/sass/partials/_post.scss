@@ -5,6 +5,8 @@
 .post-container_details_img {
   width: 5rem;
   height: 5rem;
+  overflow: hidden;
+  border-radius: 50%;
 
   img {
     width: 100%;
@@ -14,9 +16,15 @@
   }
 }
 
+.post-container_details_titles {
+  width: 400px;
+  margin-left: 2rem;
+}
+
 .post-container_details-wrapper {
   display: flex;
   margin: 1rem auto;
+  justify-content: center;
 }
 
 .post-container_img-wrapper {

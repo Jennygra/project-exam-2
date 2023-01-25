@@ -3,7 +3,7 @@ import ProfileList from "./ProfileList";
 function Profiles() {
   return (
     <>
-      <div>
+      <div className="profiles-heading_container">
         <h1>Profiles</h1>
 
         <div>

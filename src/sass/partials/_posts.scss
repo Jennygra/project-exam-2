@@ -1,0 +1,50 @@
+.posts-item {
+  width: 400px;
+  height: 600px;
+  box-shadow: $colour-ui-shadow;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.posts-item_img-wrapper {
+  width: 400px;
+  height: 450px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.posts-item_details-wrapper {
+  max-width: 80%;
+  margin: 1rem auto;
+}
+
+.posts-item_actions-wrapper {
+  text-align: right;
+  margin: 1rem;
+}
+
+.posts-item_actions-wrapper i {
+  padding: 0rem 0.5rem;
+}
+
+//Custom styling for the Posts page
+.posts-heading_wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 3.5rem auto;
+  align-items: baseline;
+}
+
+.posts-postlist_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: space-evenly;
+}

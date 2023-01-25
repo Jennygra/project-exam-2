@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 import { POSTS_PATH } from "../../constants/api/Api";
-import { Spinner, Card } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
+import checkImg from "../../context/CheckImg";
+import img from "../../images/no-img.jpg";
 
 function PostList() {
   const [posts, setPosts] = useState([]);
@@ -39,14 +41,22 @@ function PostList() {
 
   return (
     <>
-      {posts.slice(0, 10).map((post) => (
-        <Card className="posts-item">
-          <Card.Img variant="top" src={post.media} />
-          <Card.Body>
-            <Card.Title>{post.title}</Card.Title>
-            <Card.Text>{post.body}</Card.Text>
-          </Card.Body>
-        </Card>
+      {posts.map((post) => (
+        <div className="posts-item">
+          <div className="posts-item_img-wrapper">
+            <img variant="top" src={checkImg(post.media, img)} />
+          </div>
+
+          <div className="posts-item_details-wrapper">
+            <h4>{post.title}</h4>
+            <p>{post.body}</p>
+          </div>
+
+          <div className="posts-item_actions-wrapper">
+            <i class="fa-regular fa-face-smile"></i>
+            <i class="fa-regular fa-comment"></i>
+          </div>
+        </div>
       ))}
     </>
   );

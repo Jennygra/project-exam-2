@@ -29,7 +29,9 @@ function Home() {
         </div>
 
         <div className="homepage-posts_wrapper">
-          <PostList />
+          <div className="homepage-posts_item">
+            <PostList />
+          </div>
         </div>
       </div>
     </>

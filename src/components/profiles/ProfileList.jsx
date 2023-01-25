@@ -51,8 +51,20 @@ function ProfileList() {
               src={checkImg(profile.avatar, img)}
             />
           </div>
-          <h5>{profile.name}</h5>
-          <Button variant="dark">Follow</Button>
+
+          <div className="profile-details_wrapper">
+            <div className="profile-details_info">
+              <h5>{profile.name}</h5>
+              <Button variant="dark">Follow</Button>
+            </div>
+
+            <div className="profile-details_counts">
+              <p>Posts: {profile._count.posts}</p>
+              <p>Followers: {profile._count.followers}</p>
+              <p>Following: {profile._count.following}</p>
+            </div>
+            <hr className="profile-hr" />
+          </div>
         </Figure>
       ))}
     </>

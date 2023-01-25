@@ -47,8 +47,23 @@
     padding: 0.1rem 1rem !important;
     border: 1px solid $colour-primary !important;
   }
+
+  .profile-details_counts,
+  .profile-hr {
+    display: none;
+  }
 }
 
 .homepage-posts_wrapper {
+  height: 650px;
+  width: 100%;
   display: flex;
+  gap: 3rem;
+  overflow-x: scroll;
+}
+
+.homepage-posts_item {
+  display: flex;
+  pad: 1rem;
+  gap: 3rem;
 }

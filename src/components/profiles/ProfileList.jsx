@@ -17,7 +17,6 @@ function ProfileList() {
       try {
         const response = await http.get(PROFILE_PATH);
         setProfiles(response.data);
-        console.log(response.data);
       } catch (error) {
         setError(error.toString());
       } finally {
@@ -44,12 +43,14 @@ function ProfileList() {
       {profiles.map((profile) => (
         <Figure>
           <div className="profile-img_wrapper">
-            <Figure.Image
-              width={100}
-              height={100}
-              alt={profile.name}
-              src={checkImg(profile.avatar, img)}
-            />
+            <a href={`profile/${profile.name}`}>
+              <Figure.Image
+                width={100}
+                height={100}
+                alt={profile.name}
+                src={checkImg(profile.avatar, img)}
+              />
+            </a>
           </div>
 
           <div className="profile-details_wrapper">

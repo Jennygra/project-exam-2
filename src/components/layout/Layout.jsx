@@ -5,6 +5,7 @@ import Login from "../login/Login";
 import Register from "../register/Register";
 import Home from "../home/Home";
 import Posts from "../posts/Posts";
+import Post from "../posts/Post";
 import Profiles from "../profiles/Profiles";
 import Profile from "../profiles/Profile";
 import PersonalProfile from "../personalProfile/PersonalProfile";
@@ -25,9 +26,14 @@ function Layout() {
             <Route path="/register" element={<Register />} />
             <Route path="/home" exact element={<Home />} />
             <Route path="/posts" element={<Posts />} />
+            <Route path="/post/:id" exact element={<Post />} />
             <Route path="/profiles" element={<Profiles />} />
             <Route path="/profile/:name" exact element={<Profile />} />
-            <Route path="/personalprofile" element={<PersonalProfile />} />
+            <Route
+              path="/personalprofile/:name"
+              exact
+              element={<PersonalProfile />}
+            />
           </Routes>
         </Container>
 

@@ -51,7 +51,7 @@ function ProfilePosts() {
     <>
       {profilePosts.map((post) => (
         <div className="Profile-posts_item">
-          <a href={`profile/${post.name}`}>
+          <a href={`post/${post.id}`}>
             <img src={checkImg(post.media, img)} />
           </a>
         </div>

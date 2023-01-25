@@ -62,7 +62,11 @@ function Profile() {
           </div>
         </div>
 
-        <div className="profile-counts_wrapper">
+        <div className="profile-detail_wrapper">
+          <div className="profile-tilte_wrapper">
+            <h4>{profile.name}</h4>
+          </div>
+
           <div className="profile-counts_item">
             <p>Posts: {profile._count.posts}</p>
             <p>Followers: {profile._count.followers}</p>

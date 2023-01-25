@@ -42,9 +42,11 @@ function PostList() {
     <>
       {posts.map((post) => (
         <div className="posts-item">
-          <div className="posts-item_img-wrapper">
-            <img src={checkImg(post.media, img)} />
-          </div>
+          <a href={`post/${post.id}`}>
+            <div className="posts-item_img-wrapper">
+              <img src={checkImg(post.media, img)} />
+            </div>
+          </a>
 
           <div className="posts-item_details-wrapper">
             <h4>{post.title}</h4>

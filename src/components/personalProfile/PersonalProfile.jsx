@@ -3,8 +3,10 @@ import useAxios from "../../hooks/useAxios";
 import { useParams, useNavigate } from "react-router-dom";
 import { PROFILE_PATH } from "../../constants/api/Api";
 import checkImg from "../../context/CheckImg";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Button } from "react-bootstrap";
 import ProfilePosts from "../profiles/ProfilePosts";
+import EditProfile from "./EditProfile";
+import MakePost from "./MakePost";
 import defaultProfileImg from "../../images/default-user-img.jpg";
 import defaultBannerImg from "../../images/no-img.jpg";
 
@@ -12,6 +14,8 @@ function PersonalProfile() {
   const [profile, setProfile] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [makePostModalShow, makePostSetModalShow] = useState(false);
+  const [editProfileModalShow, editProfileSetModalShow] = useState(false);
 
   const navigate = useNavigate();
   const { name } = useParams();
@@ -60,14 +64,25 @@ function PersonalProfile() {
           <div className="profile-header_profile-img">
             <img src={checkImg(profile.avatar, defaultProfileImg)} alt="#" />
           </div>
+
+          <div>
+            <Button
+              variant="outline-secondary"
+              onClick={() => editProfileSetModalShow(true)}
+            >
+              <i class="fa-regular fa-plus"></i>
+              Edit profile
+            </Button>
+            <EditProfile
+              show={editProfileModalShow}
+              onHide={() => editProfileSetModalShow(false)}
+            />
+          </div>
         </div>
 
         <div className="profile-counts_wrapper">
           <div className="profile-tilte_wrapper">
             <h4>{profile.name}</h4>
-            <p>
-              <a>Edit</a>
-            </p>
           </div>
 
           <div className="profile-counts_item">
@@ -78,8 +93,21 @@ function PersonalProfile() {
           <hr />
         </div>
 
-        <div className="profile-posts_wrapper">
+        <div className="profile-posts_wrapper personal_profile-posts_wrapper">
           <ProfilePosts />
+          <div>
+            <Button
+              variant="outline-secondary"
+              onClick={() => makePostSetModalShow(true)}
+            >
+              <i class="fa-regular fa-plus"></i>
+              Make a post
+            </Button>
+            <MakePost
+              show={makePostModalShow}
+              onHide={() => makePostSetModalShow(false)}
+            />
+          </div>
         </div>
       </div>
     </>

@@ -81,21 +81,18 @@ function RegisterForm() {
           <Form.Control {...register("name", { required: true })} />
           {errors.name && <span>{errors.name.message}</span>}
         </Form.Group>
-        <br />
 
         <Form.Group>
           <Form.Label>Email</Form.Label>
           <Form.Control {...register("email", { required: true })} />
           {errors.email && <span>{errors.email.message}</span>}
         </Form.Group>
-        <br />
 
         <Form.Group>
           <Form.Label>Password</Form.Label>
           <Form.Control {...register("password", { required: true })} />
           {errors.password && <span>{errors.password.message}</span>}
         </Form.Group>
-        <br />
 
         <Form.Group className="text-center">
           <Button variant="outline-dark" type="submit">

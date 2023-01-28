@@ -3,22 +3,28 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
-import { useParams } from "react-router-dom";
 import { BASE_URL, POSTS_PATH } from "../../constants/api/Api";
 import { Button, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 
 const schema = yup.object().shape({
-  body: yup.string().required("Please write a comment"),
+  name: yup.string().required("Title is required"),
+  media: yup
+    .string()
+    .matches(
+      /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/,
+      "Media must be a fully formed URL that links to a live and publicly accessible image"
+    ),
+  body: yup.string(),
+  tags: yup.string(),
 });
 
-function AddComment(props) {
+function MakePost(props) {
   const [submitting, setSubmitting] = useState(false);
-  const [commentError, setCommentError] = useState(null);
+  const [makePostError, setMakePostError] = useState(null);
   const [submitSuccessful, setSubmit] = useState(false);
 
-  const { id } = useParams();
-  const url = BASE_URL + POSTS_PATH + "/" + id + "/comment";
+  const url = BASE_URL + POSTS_PATH;
 
   const http = useAxios();
 
@@ -33,13 +39,14 @@ function AddComment(props) {
 
   async function onSubmit(data) {
     setSubmitting(true);
-    setCommentError(null);
+    setMakePostError(null);
 
     try {
       const response = await http.post(url, data);
-      console.log("Add comment response", response.data);
+      console.log("Make a post response", response.data);
     } catch (error) {
-      setCommentError(error.toString());
+      console.log("error", error);
+      setMakePostError(error.toString());
     } finally {
       setSubmitting(false);
     }
@@ -61,21 +68,39 @@ function AddComment(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Add a Comment
+          Make a post
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          {commentError && <div>Error: Your comment was not submitted</div>}
+          {makePostError && <div>Error: Failed to make a post</div>}
           <fieldset disabled={submitting}>
+            <Form.Group>
+              <Form.Label>Title</Form.Label>
+              <Form.Control {...register("title", { required: true })} />
+              {errors.title && <span>{errors.title.message}</span>}
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Label>Media</Form.Label>
+              <Form.Control {...register("media", { required: true })} />
+              {errors.media && <span>{errors.media.message}</span>}
+            </Form.Group>
+
             <Form.Group>
               <Form.Control
                 as="textarea"
                 rows={3}
-                placeholder="Comment"
+                placeholder="Write a caption"
                 {...register("body", { required: true })}
               />
               {errors.body && <span>{errors.body.message}</span>}
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Label>Tags</Form.Label>
+              <Form.Control {...register("tags", { required: true })} />
+              {errors.tags && <span>{errors.tags.message}</span>}
             </Form.Group>
 
             <Form.Group className="text-center">
@@ -90,4 +115,4 @@ function AddComment(props) {
   );
 }
 
-export default AddComment;
+export default MakePost;

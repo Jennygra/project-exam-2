@@ -35,6 +35,7 @@ function PostList() {
   }
 
   if (error) {
+    console.log(error);
     return <div>ERROR: An error occured</div>;
   }
 

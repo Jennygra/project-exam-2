@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -11,15 +12,15 @@ const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
   media: yup.string().url(),
   body: yup.string(),
-  tags: yup.object().shape({}),
 });
 
-function MakePost(props) {
+function EditPost(props) {
   const [submitting, setSubmitting] = useState(false);
-  const [makePostError, setMakePostError] = useState(null);
+  const [updatePostError, setUpdatePostError] = useState(null);
   const [submitSuccessful, setSubmit] = useState(false);
 
-  const url = BASE_URL + POSTS_PATH;
+  const { id } = useParams();
+  const url = BASE_URL + POSTS_PATH + "/" + id;
   const http = useAxios();
 
   const {
@@ -33,16 +34,14 @@ function MakePost(props) {
 
   async function onSubmit(data) {
     setSubmitting(true);
-    setMakePostError(null);
-
-    console.log(data);
+    setUpdatePostError(null);
 
     try {
-      const response = await http.post(url, data);
-      console.log("Make a post response", response.data);
+      const response = await http.put(url, data);
+      console.log("Update profile response", response.data);
     } catch (error) {
       console.log("error", error);
-      setMakePostError(error.toString());
+      setUpdatePostError(error.toString());
     } finally {
       setSubmitting(false);
     }
@@ -64,12 +63,12 @@ function MakePost(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Make a post
+          Update post
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          {makePostError && <div>Error: Failed to make a post</div>}
+          {updatePostError && <div>Error: Failed to make a post</div>}
           <fieldset disabled={submitting}>
             <Form.Group>
               <Form.Label>Title</Form.Label>
@@ -95,13 +94,13 @@ function MakePost(props) {
 
             <Form.Group>
               <Form.Label>Tags</Form.Label>
-              <Form.Control {...register("tags", { required: true })} />
+
               {errors.tags && <span>{errors.tags.message}</span>}
             </Form.Group>
 
             <Form.Group className="text-center">
               <Button variant="dark" type="submit">
-                {submitting ? "Submitting..." : "Submit"}
+                {submitting ? "Updating..." : "Update"}
               </Button>
             </Form.Group>
           </fieldset>
@@ -111,4 +110,4 @@ function MakePost(props) {
   );
 }
 
-export default MakePost;
+export default EditPost;

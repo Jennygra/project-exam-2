@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 import { PROFILE_PATH } from "../../constants/api/Api";
+import FollowUnfollow from "./FollowUnfollow";
 import { Spinner, Button, Figure } from "react-bootstrap";
 import checkImg from "../../context/CheckImg";
 import img from "../../images/default-user-img.jpg";
@@ -43,7 +44,7 @@ function ProfileList() {
       {profiles.map((profile) => (
         <Figure>
           <div className="profile-img_wrapper">
-            <a href={`profile/${profile.name}`}>
+            <a href={`/profile/${profile.name}`}>
               <Figure.Image
                 width={100}
                 height={100}
@@ -56,7 +57,7 @@ function ProfileList() {
           <div className="profile-details_wrapper">
             <div className="profile-details_info">
               <h5>{profile.name}</h5>
-              <Button variant="dark">Follow</Button>
+              <FollowUnfollow />
             </div>
 
             <div className="profile-details_counts">

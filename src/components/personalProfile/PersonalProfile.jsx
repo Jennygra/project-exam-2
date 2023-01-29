@@ -65,12 +65,11 @@ function PersonalProfile() {
             <img src={checkImg(profile.avatar, defaultProfileImg)} alt="#" />
           </div>
 
-          <div>
+          <div className="profile-header_update">
             <Button
               variant="outline-secondary"
               onClick={() => editProfileSetModalShow(true)}
             >
-              <i class="fa-regular fa-plus"></i>
               Edit profile
             </Button>
             <EditProfile

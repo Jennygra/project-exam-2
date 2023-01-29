@@ -39,6 +39,7 @@
 
 .profile-tilte_wrapper {
   text-align: center;
+  margin: 1.5rem;
 }
 
 .profile-counts_item {
@@ -80,4 +81,22 @@
   flex-direction: column;
   text-align: center;
   gap: 3rem;
+}
+
+.profile-header_update {
+  text-align: right;
+
+  button {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    color: $colour-shades-light;
+
+    &:hover {
+      background: none;
+      border: none;
+      text-decoration: underline;
+      color: $colour-ui-primary;
+    }
+  }
 }

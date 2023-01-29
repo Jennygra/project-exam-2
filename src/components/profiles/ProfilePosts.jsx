@@ -21,7 +21,6 @@ function ProfilePosts() {
       try {
         const response = await http.get(url);
         setProfilePosts(response.data);
-        console.log("Profile reponse:", response.data);
       } catch (error) {
         setError(error.toString());
       } finally {
@@ -51,7 +50,7 @@ function ProfilePosts() {
     <>
       {profilePosts.map((post) => (
         <div className="Profile-posts_item">
-          <a href={`post/${post.id}`}>
+          <a href={`/post/${post.id}`}>
             <img src={checkImg(post.media, img)} />
           </a>
         </div>

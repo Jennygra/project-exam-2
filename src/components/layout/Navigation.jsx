@@ -64,7 +64,7 @@ function Navigation() {
                   }
                   id="basic-nav-dropdown"
                 >
-                  <NavDropdown.Item href={`personalprofile/${auth.name}`}>
+                  <NavDropdown.Item href={`/personalprofile/${auth.name}`}>
                     Profile
                   </NavDropdown.Item>
                   <NavDropdown.Item onClick={logout} href="/">

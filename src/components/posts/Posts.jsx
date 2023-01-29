@@ -7,7 +7,7 @@ function Posts() {
         <h1>Post</h1>
 
         <div>
-          <input placeholder="Search post..."></input>
+          <input placeholder="Search post..." id="postSearchInput"></input>
         </div>
       </div>
 

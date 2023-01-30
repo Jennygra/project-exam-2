@@ -57,73 +57,213 @@ function Post() {
     return <div>ERROR: An error occured</div>;
   }
 
-  console.log(auth.name, post.author.name);
+  // if (auth.name === post.author.name) {
+  //   setUpdateProfile(true);
+  // }
 
-  return (
-    <>
-      <div className="post-container">
-        <div className="post-container_img-wrapper">
-          <img src={checkImg(post.media, defaultPostImg)} alt="#" />
-        </div>
+  // return (
+  //   <>
+  //     <div className="post-container">
+  //       <div className="post-container_img-wrapper">
+  //         <img src={checkImg(post.media, defaultPostImg)} alt="#" />
+  //       </div>
 
-        <div className="post-container_details-wrapper">
-          <div className="post-container_details_img">
-            <a href={`/profile/${post.author.name}`}>
-              <img
-                src={checkImg(post.author.avatar, defaultProfileImg)}
-                alt="#"
-              ></img>
-            </a>
+  //       <div className="post-container_details-wrapper">
+  //         <div className="post-container_details_img">
+  //           <a href={`/profile/${post.author.name}`}>
+  //             <img
+  //               src={checkImg(post.author.avatar, defaultProfileImg)}
+  //               alt="#"
+  //             ></img>
+  //           </a>
+  //         </div>
+
+  //         <div className="post-container_details_titles">
+  //           <h4>{post.author.name}</h4>
+  //           <h6>{post.title}</h6>
+  //           <p>{post.body}</p>
+  //         </div>
+
+  //         <div className="post-container_details_btn">
+  //           {updateProfile ? (
+  //             <>
+  //               <Button
+  //                 variant="outline-secondary"
+  //                 onClick={() => setEditProfileModalShow(true)}
+  //               >
+  //                 <i class="fa-regular fa-plus"></i>
+  //                 Edit post
+  //               </Button>
+  //               <EditPost
+  //                 show={editProfileModalShow}
+  //                 onHide={() => setEditProfileModalShow(false)}
+  //               />
+  //             </>
+  //           ) : (
+  //             <></>
+  //           )}
+  //         </div>
+  //       </div>
+
+  //       <hr />
+
+  //       <div className="post-container_comment-wrapper">
+  //         <div>
+  //           <p>Comment</p>
+  //         </div>
+
+  //         <div>
+  //           <GetComment />
+  //           <div>
+  //             <Button variant="outline-dark" onClick={() => setModalShow(true)}>
+  //               <i class="fa-regular fa-plus"></i>
+  //               Write a comment
+  //             </Button>
+
+  //             <AddComment show={modalShow} onHide={() => setModalShow(false)} />
+  //           </div>
+  //         </div>
+
+  //         <div className="post-container_icons-wrapper">
+  //           <i class="fa-regular fa-face-smile"></i>
+  //           <i class="fa-regular fa-share-from-square"></i>
+  //         </div>
+  //       </div>
+  //     </div>
+  // </>
+  // );
+
+  if (auth.name === post.author.name) {
+    return (
+      <>
+        <div className="post-container">
+          <div className="post-container_img-wrapper">
+            <img src={checkImg(post.media, defaultPostImg)} alt="#" />
           </div>
 
-          <div className="post-container_details_titles">
-            <h4>{post.author.name}</h4>
-            <h6>{post.title}</h6>
-            <p>{post.body}</p>
-          </div>
+          <div className="post-container_details-wrapper">
+            <div className="post-container_details_img">
+              <a href={`/profile/${post.author.name}`}>
+                <img
+                  src={checkImg(post.author.avatar, defaultProfileImg)}
+                  alt="#"
+                ></img>
+              </a>
+            </div>
 
-          <div>
-            <Button
-              variant="outline-secondary"
-              onClick={() => setEditProfileModalShow(true)}
-            >
-              <i class="fa-regular fa-plus"></i>
-              Edit post
-            </Button>
-            <EditPost
-              show={editProfileModalShow}
-              onHide={() => setEditProfileModalShow(false)}
-            />
-          </div>
-        </div>
+            <div className="post-container_details_titles">
+              <h4>{post.author.name}</h4>
+              <h6>{post.title}</h6>
+              <p>{post.body}</p>
+            </div>
 
-        <hr />
-
-        <div className="post-container_comment-wrapper">
-          <div>
-            <p>Comment</p>
-          </div>
-
-          <div>
-            <GetComment />
-            <div>
-              <Button variant="outline-dark" onClick={() => setModalShow(true)}>
+            <div className="post-container_details_btn">
+              <Button
+                variant="outline-secondary"
+                onClick={() => setEditProfileModalShow(true)}
+              >
                 <i class="fa-regular fa-plus"></i>
-                Write a comment
+                Edit post
               </Button>
-
-              <AddComment show={modalShow} onHide={() => setModalShow(false)} />
+              <EditPost
+                show={editProfileModalShow}
+                onHide={() => setEditProfileModalShow(false)}
+              />
             </div>
           </div>
 
-          <div className="post-container_icons-wrapper">
-            <i class="fa-regular fa-face-smile"></i>
-            <i class="fa-regular fa-share-from-square"></i>
+          <hr />
+
+          <div className="post-container_comment-wrapper">
+            <div>
+              <p>Comment</p>
+            </div>
+
+            <div>
+              <GetComment />
+              <div>
+                <Button
+                  variant="outline-dark"
+                  onClick={() => setModalShow(true)}
+                >
+                  <i class="fa-regular fa-plus"></i>
+                  Write a comment
+                </Button>
+
+                <AddComment
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                />
+              </div>
+            </div>
+
+            <div className="post-container_icons-wrapper">
+              <i class="fa-regular fa-face-smile"></i>
+              <i class="fa-regular fa-share-from-square"></i>
+            </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div className="post-container">
+          <div className="post-container_img-wrapper">
+            <img src={checkImg(post.media, defaultPostImg)} alt="#" />
+          </div>
+
+          <div className="post-container_details-wrapper">
+            <div className="post-container_details_img">
+              <a href={`/profile/${post.author.name}`}>
+                <img
+                  src={checkImg(post.author.avatar, defaultProfileImg)}
+                  alt="#"
+                ></img>
+              </a>
+            </div>
+
+            <div className="post-container_details_titles">
+              <h4>{post.author.name}</h4>
+              <h6>{post.title}</h6>
+              <p>{post.body}</p>
+            </div>
+          </div>
+
+          <hr />
+
+          <div className="post-container_comment-wrapper">
+            <div>
+              <p>Comment</p>
+            </div>
+
+            <div>
+              <GetComment />
+              <div>
+                <Button
+                  variant="outline-dark"
+                  onClick={() => setModalShow(true)}
+                >
+                  <i class="fa-regular fa-plus"></i>
+                  Write a comment
+                </Button>
+
+                <AddComment
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                />
+              </div>
+            </div>
+
+            <div className="post-container_icons-wrapper">
+              <i class="fa-regular fa-face-smile"></i>
+              <i class="fa-regular fa-share-from-square"></i>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 }
 
 export default Post;

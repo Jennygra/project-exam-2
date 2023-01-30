@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
+import AuthContext from "../../context/AuthContext/authContext";
 import { BASE_URL, POSTS_PATH } from "../../constants/api/Api";
-import { Button, Form } from "react-bootstrap";
-import Modal from "react-bootstrap/Modal";
+import { Button, Form, Modal } from "react-bootstrap";
+import TagsInput from "../posts/TagsInput";
 
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
@@ -18,9 +20,11 @@ function MakePost(props) {
   const [submitting, setSubmitting] = useState(false);
   const [makePostError, setMakePostError] = useState(null);
   const [submitSuccessful, setSubmit] = useState(false);
+  const [auth, setAuth] = useContext(AuthContext);
 
   const url = BASE_URL + POSTS_PATH;
   const http = useAxios();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -40,6 +44,7 @@ function MakePost(props) {
     try {
       const response = await http.post(url, data);
       console.log("Make a post response", response.data);
+      navigate(`/personalprofile/${auth.name}`);
     } catch (error) {
       console.log("error", error);
       setMakePostError(error.toString());
@@ -95,7 +100,7 @@ function MakePost(props) {
 
             <Form.Group>
               <Form.Label>Tags</Form.Label>
-              <Form.Control {...register("tags", { required: true })} />
+              <TagsInput {...register("tags", { required: true })} />
               {errors.tags && <span>{errors.tags.message}</span>}
             </Form.Group>
 

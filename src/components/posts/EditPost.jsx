@@ -1,27 +1,32 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
+import AuthContext from "../../context/AuthContext/authContext";
 import { BASE_URL, POSTS_PATH } from "../../constants/api/Api";
-import { Button, Form } from "react-bootstrap";
-import Modal from "react-bootstrap/Modal";
+import TagsInput from "./TagsInput";
+import DeletePost from "./DeletePost";
+import { Button, Form, Modal } from "react-bootstrap";
 
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
   media: yup.string().url(),
   body: yup.string(),
+  tags: yup.string(),
 });
 
 function EditPost(props) {
   const [submitting, setSubmitting] = useState(false);
   const [updatePostError, setUpdatePostError] = useState(null);
   const [submitSuccessful, setSubmit] = useState(false);
+  const [auth, setAuth] = useContext(AuthContext);
 
   const { id } = useParams();
   const url = BASE_URL + POSTS_PATH + "/" + id;
   const http = useAxios();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -36,9 +41,12 @@ function EditPost(props) {
     setSubmitting(true);
     setUpdatePostError(null);
 
+    console.log(data);
+
     try {
       const response = await http.put(url, data);
       console.log("Update profile response", response.data);
+      navigate(`/personalprofile/${auth.name}`);
     } catch (error) {
       console.log("error", error);
       setUpdatePostError(error.toString());
@@ -94,7 +102,7 @@ function EditPost(props) {
 
             <Form.Group>
               <Form.Label>Tags</Form.Label>
-
+              <TagsInput {...register("tags", { required: true })} />
               {errors.tags && <span>{errors.tags.message}</span>}
             </Form.Group>
 
@@ -102,6 +110,8 @@ function EditPost(props) {
               <Button variant="dark" type="submit">
                 {submitting ? "Updating..." : "Update"}
               </Button>
+
+              <DeletePost />
             </Form.Group>
           </fieldset>
         </Form>

@@ -15,13 +15,17 @@ function DeletePost() {
   const url = BASE_URL + POSTS_PATH + "/" + id;
 
   async function handleDelete() {
-    try {
-      const response = await http.delete(url);
-      console.log("Delete post response", response);
-      navigate(`/personalprofile/${auth.name}`);
-    } catch (error) {
-      console.log("error", error);
-      setError(error);
+    const confirmDelete = window.confirm("Do you want to delete this post?");
+
+    if (confirmDelete) {
+      try {
+        const response = await http.delete(url);
+        console.log("Delete post response", response);
+        navigate(`/personalprofile/${auth.name}`);
+      } catch (error) {
+        console.log("error", error);
+        setError(error);
+      }
     }
   }
 

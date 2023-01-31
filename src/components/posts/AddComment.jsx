@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { BASE_URL, POSTS_PATH } from "../../constants/api/Api";
 import { Button, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
@@ -21,6 +21,7 @@ function AddComment(props) {
   const url = BASE_URL + POSTS_PATH + "/" + id + "/comment";
 
   const http = useAxios();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -38,6 +39,7 @@ function AddComment(props) {
     try {
       const response = await http.post(url, data);
       console.log("Add comment response", response.data);
+      navigate(`/post/${id}`);
     } catch (error) {
       setCommentError(error.toString());
     } finally {

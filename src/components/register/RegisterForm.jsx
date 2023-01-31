@@ -99,7 +99,7 @@ function RegisterForm() {
             {submitting ? "Submitting..." : "Register"}
           </Button>
           <p>
-            Got an account?<a href="/login">Login here</a>
+            Got an account? <a href="/login">Login here</a>
           </p>
         </Form.Group>
       </fieldset>

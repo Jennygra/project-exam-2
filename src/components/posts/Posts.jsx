@@ -1,4 +1,5 @@
 import PostList from "./PostList";
+import SearchPost from "./SearchPost";
 
 function Posts() {
   return (
@@ -7,7 +8,11 @@ function Posts() {
         <h1>Post</h1>
 
         <div>
-          <input placeholder="Search post..." id="postSearchInput"></input>
+          <input
+            type="text"
+            placeholder="Search post..."
+            onKeyUp={SearchPost}
+          ></input>
         </div>
       </div>
 

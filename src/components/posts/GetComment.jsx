@@ -55,7 +55,7 @@ function GetComment() {
   return (
     <>
       {comment.comments.map((comments) => (
-        <div className="comment-container">
+        <div className="comment-container" key={comments.author.name}>
           <div className="comment-img">
             <a href={`profile/${comments.author.name}`}>
               <img src={checkImg(comments.author.avatar, defaultProfileImg)} />

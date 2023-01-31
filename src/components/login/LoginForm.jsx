@@ -36,7 +36,6 @@ function LoginForm() {
     try {
       const response = await axios.post(url, data);
       setAuth(response.data);
-      console.log("response", response.data);
       navigate("/home");
     } catch (error) {
       console.log("error", error);
@@ -72,7 +71,7 @@ function LoginForm() {
             {submitting ? "Logging in..." : "Login"}
           </Button>
           <p>
-            Not registered? <a href="#">Register here</a>
+            Not registered? <a href="/resgister">Register here</a>
           </p>
         </Form.Group>
       </fieldset>

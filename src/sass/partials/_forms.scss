@@ -2,6 +2,12 @@ form {
   max-width: 40rem;
   margin: auto;
 
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
   input,
   button {
     border-radius: 0% !important;
@@ -32,6 +38,7 @@ form {
   }
 }
 
+/* Styling for Tags input on update post */
 .tags-input-container {
   min-width: 600px;
   display: flex;

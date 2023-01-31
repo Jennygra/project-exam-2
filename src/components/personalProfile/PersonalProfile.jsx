@@ -85,9 +85,9 @@ function PersonalProfile() {
           </div>
 
           <div className="profile-counts_item">
-            <p>Posts: {profile._count.posts}</p>
-            <p>Followers: {profile._count.followers}</p>
-            <p>Following: {profile._count.following}</p>
+            <p>{profile._count.posts} posts</p>
+            <p>{profile._count.followers} followers</p>
+            <p>{profile._count.following} following</p>
           </div>
           <hr />
         </div>
@@ -99,7 +99,7 @@ function PersonalProfile() {
               variant="outline-secondary"
               onClick={() => makePostSetModalShow(true)}
             >
-              <i class="fa-regular fa-plus"></i>
+              <i className="fa-regular fa-plus"></i>
               Make a post
             </Button>
             <MakePost

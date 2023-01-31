@@ -1,5 +1,4 @@
 //Global profile styling
-
 .profile-header_wrapper {
   position: relative;
   margin-bottom: 5rem;
@@ -45,6 +44,11 @@
 .profile-counts_item {
   display: flex;
   justify-content: space-evenly;
+
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 .profile-detail_wrapper {
@@ -57,8 +61,9 @@
 
 .profile-posts_wrapper {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   flex-wrap: wrap;
+  gap: 1rem;
 
   .Profile-posts_item {
     width: 300px;

@@ -58,7 +58,6 @@ function Navigation() {
                       <div className="nav-dropdown_user-img">
                         <img src={checkImg(auth.avatar, profileImgDefault)} />
                       </div>
-
                       {auth.name}
                     </div>
                   }

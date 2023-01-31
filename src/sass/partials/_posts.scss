@@ -4,6 +4,16 @@
   box-shadow: $colour-ui-shadow;
   border-radius: 40px;
   overflow: hidden;
+
+  a {
+    color: $colour-primary;
+    text-decoration: none;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 300px;
+    height: 400px;
+  }
 }
 
 .posts-item_img-wrapper {
@@ -16,11 +26,24 @@
     object-fit: cover;
     object-position: center;
   }
+
+  @media screen and (max-width: 600px) {
+    width: 300px;
+    height: 280px;
+  }
 }
 
 .posts-item_details-wrapper {
   max-width: 80%;
   margin: 1rem auto;
+
+  p {
+    overflow: hidden;
+    display: block;
+    width: 90%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 }
 
 .posts-item_actions-wrapper {

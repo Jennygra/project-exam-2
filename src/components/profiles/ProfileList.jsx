@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 import { PROFILE_PATH } from "../../constants/api/Api";
 import FollowUnfollow from "./FollowUnfollow";
-import { Spinner, Button, Figure } from "react-bootstrap";
+import { Spinner, Figure } from "react-bootstrap";
 import checkImg from "../../context/CheckImg";
 import img from "../../images/default-user-img.jpg";
 
@@ -18,6 +18,7 @@ function ProfileList() {
       try {
         const response = await http.get(PROFILE_PATH);
         setProfiles(response.data);
+        console.log(response.data);
       } catch (error) {
         setError(error.toString());
       } finally {
@@ -42,7 +43,7 @@ function ProfileList() {
   return (
     <>
       {profiles.map((profile) => (
-        <Figure>
+        <Figure key={profile.name}>
           <div className="profile-img_wrapper">
             <a href={`/profile/${profile.name}`}>
               <Figure.Image
@@ -57,13 +58,13 @@ function ProfileList() {
           <div className="profile-details_wrapper">
             <div className="profile-details_info">
               <h5>{profile.name}</h5>
-              <FollowUnfollow />
+              {/* <FollowUnfollow username={profile.name} /> */}
             </div>
 
             <div className="profile-details_counts">
-              <p>Posts: {profile._count.posts}</p>
-              <p>Followers: {profile._count.followers}</p>
-              <p>Following: {profile._count.following}</p>
+              <p>{profile._count.posts} posts</p>
+              <p>{profile._count.followers} followers</p>
+              <p>{profile._count.following} following</p>
             </div>
             <hr className="profile-hr" />
           </div>

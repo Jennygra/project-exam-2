@@ -3,7 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { PROFILE_PATH } from "../../constants/api/Api";
 import ProfilePosts from "./ProfilePosts";
-import { Spinner, Button } from "react-bootstrap";
+import FollowUnfollow from "./FollowUnfollow";
+import { Spinner } from "react-bootstrap";
 import checkImg from "../../context/CheckImg";
 import defaultProfileImg from "../../images/default-user-img.jpg";
 import defaultBannerImg from "../../images/no-img.jpg";
@@ -65,13 +66,13 @@ function Profile() {
         <div className="profile-detail_wrapper">
           <div className="profile-tilte_wrapper">
             <h4>{profile.name}</h4>
-            <Button variant="dark">Follow</Button>
+            {/* <FollowUnfollow username={profile.name} /> */}
           </div>
 
           <div className="profile-counts_item">
-            <p>Posts: {profile._count.posts}</p>
-            <p>Followers: {profile._count.followers}</p>
-            <p>Following: {profile._count.following}</p>
+            <p>{profile._count.posts} posts</p>
+            <p>{profile._count.followers} followers</p>
+            <p>{profile._count.following} following</p>
           </div>
           <hr />
         </div>

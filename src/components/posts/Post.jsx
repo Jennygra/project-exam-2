@@ -91,7 +91,7 @@ function Post() {
   //                 variant="outline-secondary"
   //                 onClick={() => setEditProfileModalShow(true)}
   //               >
-  //                 <i class="fa-regular fa-plus"></i>
+  //                 class="fa-regular fa-plus"></i>
   //                 Edit post
   //               </Button>
   //               <EditPost
@@ -162,7 +162,7 @@ function Post() {
                 variant="outline-secondary"
                 onClick={() => setEditProfileModalShow(true)}
               >
-                <i class="fa-regular fa-plus"></i>
+                <i className="fa-regular fa-plus"></i>
                 Edit post
               </Button>
               <EditPost
@@ -186,7 +186,7 @@ function Post() {
                   variant="outline-dark"
                   onClick={() => setModalShow(true)}
                 >
-                  <i class="fa-regular fa-plus"></i>
+                  <i className="fa-regular fa-plus"></i>
                   Write a comment
                 </Button>
 
@@ -198,8 +198,8 @@ function Post() {
             </div>
 
             <div className="post-container_icons-wrapper">
-              <i class="fa-regular fa-face-smile"></i>
-              <i class="fa-regular fa-share-from-square"></i>
+              <i className="fa-regular fa-face-smile"></i>
+              <i className="fa-regular fa-share-from-square"></i>
             </div>
           </div>
         </div>
@@ -244,7 +244,7 @@ function Post() {
                   variant="outline-dark"
                   onClick={() => setModalShow(true)}
                 >
-                  <i class="fa-regular fa-plus"></i>
+                  <i className="fa-regular fa-plus"></i>
                   Write a comment
                 </Button>
 
@@ -256,8 +256,8 @@ function Post() {
             </div>
 
             <div className="post-container_icons-wrapper">
-              <i class="fa-regular fa-face-smile"></i>
-              <i class="fa-regular fa-share-from-square"></i>
+              <i className="fa-regular fa-face-smile"></i>
+              <i className="fa-regular fa-share-from-square"></i>
             </div>
           </div>
         </div>

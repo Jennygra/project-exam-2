@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
+import AuthContext from "../../context/AuthContext/authContext";
 import { BASE_URL, PROFILE_PATH } from "../../constants/api/Api";
 import { Button, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
@@ -17,11 +18,13 @@ function EditProfile(props) {
   const [submitting, setSubmitting] = useState(false);
   const [updateProfileError, setUpdateProfileError] = useState(null);
   const [submitSuccessful, setSubmit] = useState(false);
+  const [auth, setAuth] = useContext(AuthContext);
 
   const { name } = useParams();
   const url = BASE_URL + PROFILE_PATH + "/" + name + "/media";
 
   const http = useAxios();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -39,6 +42,7 @@ function EditProfile(props) {
     try {
       const response = await http.put(url, data);
       console.log("Update profile response", response.data);
+      navigate(`/personalprofile/${auth.name}`);
     } catch (error) {
       console.log("error", error);
       setUpdateProfileError(error.toString());

@@ -48,12 +48,12 @@ function PostList() {
             <div className="posts-item_img-wrapper">
               <img src={checkImg(post.media, img)} />
             </div>
-
-            <div className="posts-item_details-wrapper">
-              <h4>{post.title}</h4>
-              <p>{post.body}</p>
-            </div>
           </a>
+
+          <div className="posts-item_details-wrapper">
+            <h4>{post.title}</h4>
+            <p>{post.body}</p>
+          </div>
 
           <div className="posts-item_actions-wrapper">
             <i className="fa-regular fa-face-smile" onClick={ReactPost}></i>

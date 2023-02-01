@@ -3,8 +3,8 @@
 }
 
 .post-container_details_img {
-  width: 5rem;
-  height: 5rem;
+  width: 3rem;
+  height: 3rem;
   overflow: hidden;
   border-radius: 50%;
 
@@ -16,20 +16,15 @@
   }
 }
 
-.post-container_details_titles {
-  width: 400px;
-  margin-left: 2rem;
-}
-
 .post-container_details-wrapper {
   display: flex;
+  flex-wrap: wrap;
   margin: 1rem auto;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
 }
 
 .post-container_img-wrapper {
-  width: 40rem;
-  height: 40rem;
   overflow: hidden;
   border-radius: 30px;
   margin: auto;

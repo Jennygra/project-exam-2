@@ -94,7 +94,8 @@ function PersonalProfile() {
 
         <div className="profile-posts_wrapper personal_profile-posts_wrapper">
           <ProfilePosts />
-          <div>
+
+          <div className="personal_profile-posts_btn">
             <Button
               variant="outline-secondary"
               onClick={() => makePostSetModalShow(true)}

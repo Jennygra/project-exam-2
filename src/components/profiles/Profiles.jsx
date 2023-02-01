@@ -6,7 +6,7 @@ function Profiles() {
       <div className="profiles-heading_container">
         <h1>Profiles</h1>
 
-        <div>
+        <div className="profiles-heading_input">
           <input placeholder="Search profiles.."></input>
         </div>
       </div>

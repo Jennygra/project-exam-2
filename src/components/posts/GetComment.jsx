@@ -58,7 +58,10 @@ function GetComment() {
         <div className="comment-container" key={comments.author.name}>
           <div className="comment-img">
             <a href={`/profile/${comments.author.name}`}>
-              <img src={checkImg(comments.author.avatar, defaultProfileImg)} />
+              <img
+                src={checkImg(comments.author.avatar, defaultProfileImg)}
+                alt={comments.author.name + "profile image"}
+              />
             </a>
           </div>
 

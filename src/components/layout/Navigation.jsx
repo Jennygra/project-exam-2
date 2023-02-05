@@ -41,7 +41,7 @@ function Navigation() {
         )}
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="basic-navbar-nav" className="navbar-toggle-menu">
           <Nav className="ms-auto justify-content-end">
             {auth ? (
               <>
@@ -56,7 +56,10 @@ function Navigation() {
                   title={
                     <div className="nav-dropdown_user-wrapper">
                       <div className="nav-dropdown_user-img">
-                        <img src={checkImg(auth.avatar, profileImgDefault)} />
+                        <img
+                          src={checkImg(auth.avatar, profileImgDefault)}
+                          alt={auth.name + "profile image"}
+                        />
                       </div>
                       {auth.name}
                     </div>

@@ -7,6 +7,7 @@ import { Spinner, Button } from "react-bootstrap";
 import GetComment from "./GetComment";
 import AddComment from "./AddComment";
 import EditPost from "./EditPost";
+import ReactPost from "./ReactPost";
 import checkImg from "../../context/CheckImg";
 import defaultPostImg from "../../images/no-img.jpg";
 import defaultProfileImg from "../../images/default-user-img.jpg";
@@ -18,7 +19,6 @@ function Post() {
   const [modalShow, setModalShow] = useState(false);
   const [editProfileModalShow, setEditProfileModalShow] = useState(false);
   const [auth, setAuth] = useContext(AuthContext);
-  const [updateProfile, setUpdateProfile] = useState(false);
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -57,88 +57,15 @@ function Post() {
     return <div>ERROR: An error occured</div>;
   }
 
-  // if (auth.name === post.author.name) {
-  //   setUpdateProfile(true);
-  // }
-
-  // return (
-  //   <>
-  //     <div className="post-container">
-  //       <div className="post-container_img-wrapper">
-  //         <img src={checkImg(post.media, defaultPostImg)} alt="#" />
-  //       </div>
-
-  //       <div className="post-container_details-wrapper">
-  //         <div className="post-container_details_img">
-  //           <a href={`/profile/${post.author.name}`}>
-  //             <img
-  //               src={checkImg(post.author.avatar, defaultProfileImg)}
-  //               alt="#"
-  //             ></img>
-  //           </a>
-  //         </div>
-
-  //         <div className="post-container_details_titles">
-  //           <h4>{post.author.name}</h4>
-  //           <h6>{post.title}</h6>
-  //           <p>{post.body}</p>
-  //         </div>
-
-  //         <div className="post-container_details_btn">
-  //           {updateProfile ? (
-  //             <>
-  //               <Button
-  //                 variant="outline-secondary"
-  //                 onClick={() => setEditProfileModalShow(true)}
-  //               >
-  //                 class="fa-regular fa-plus"></i>
-  //                 Edit post
-  //               </Button>
-  //               <EditPost
-  //                 show={editProfileModalShow}
-  //                 onHide={() => setEditProfileModalShow(false)}
-  //               />
-  //             </>
-  //           ) : (
-  //             <></>
-  //           )}
-  //         </div>
-  //       </div>
-
-  //       <hr />
-
-  //       <div className="post-container_comment-wrapper">
-  //         <div>
-  //           <p>Comment</p>
-  //         </div>
-
-  //         <div>
-  //           <GetComment />
-  //           <div>
-  //             <Button variant="outline-dark" onClick={() => setModalShow(true)}>
-  //               <i class="fa-regular fa-plus"></i>
-  //               Write a comment
-  //             </Button>
-
-  //             <AddComment show={modalShow} onHide={() => setModalShow(false)} />
-  //           </div>
-  //         </div>
-
-  //         <div className="post-container_icons-wrapper">
-  //           <i class="fa-regular fa-face-smile"></i>
-  //           <i class="fa-regular fa-share-from-square"></i>
-  //         </div>
-  //       </div>
-  //     </div>
-  // </>
-  // );
-
   if (auth.name === post.author.name) {
     return (
       <>
         <div className="post-container">
           <div className="post-container_img-wrapper">
-            <img src={checkImg(post.media, defaultPostImg)} alt="#" />
+            <img
+              src={checkImg(post.media, defaultPostImg)}
+              alt={post.author.name + "post media"}
+            />
           </div>
 
           <div className="post-container_details-wrapper">
@@ -146,7 +73,7 @@ function Post() {
               <a href={`/profile/${post.author.name}`}>
                 <img
                   src={checkImg(post.author.avatar, defaultProfileImg)}
-                  alt="#"
+                  alt={post.author.name + "profile image"}
                 ></img>
               </a>
             </div>
@@ -198,7 +125,7 @@ function Post() {
             </div>
 
             <div className="post-container_icons-wrapper">
-              <i className="fa-regular fa-face-smile"></i>
+              <i className="fa-regular fa-face-smile" onClick={ReactPost}></i>
               <i className="fa-regular fa-share-from-square"></i>
             </div>
           </div>
@@ -210,7 +137,10 @@ function Post() {
       <>
         <div className="post-container">
           <div className="post-container_img-wrapper">
-            <img src={checkImg(post.media, defaultPostImg)} alt="#" />
+            <img
+              src={checkImg(post.media, defaultPostImg)}
+              alt={post.author.name + "post media"}
+            />
           </div>
 
           <div className="post-container_details-wrapper">
@@ -218,7 +148,7 @@ function Post() {
               <a href={`/profile/${post.author.name}`}>
                 <img
                   src={checkImg(post.author.avatar, defaultProfileImg)}
-                  alt="#"
+                  alt={post.author.name + "profile image"}
                 ></img>
               </a>
             </div>
@@ -256,7 +186,7 @@ function Post() {
             </div>
 
             <div className="post-container_icons-wrapper">
-              <i className="fa-regular fa-face-smile"></i>
+              <ReactPost reactionList={post.reactions} />
               <i className="fa-regular fa-share-from-square"></i>
             </div>
           </div>

@@ -46,7 +46,7 @@ function PostList() {
         <div className="posts-item" key={post.id}>
           <a href={`post/${post.id}`}>
             <div className="posts-item_img-wrapper">
-              <img src={checkImg(post.media, img)} />
+              <img src={checkImg(post.media, img)} alt="" />
             </div>
           </a>
 

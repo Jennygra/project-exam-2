@@ -36,6 +36,7 @@ function Post() {
       try {
         const response = await http.get(url);
         setPost(response.data);
+        console.log(response.data);
       } catch (error) {
         setError(error.toString());
       } finally {

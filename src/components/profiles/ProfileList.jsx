@@ -17,7 +17,6 @@ function ProfileList() {
       try {
         const response = await http.get(PROFILE_PATH);
         setProfiles(response.data);
-        console.log(response.data);
       } catch (error) {
         setError(error.toString());
       } finally {

@@ -3,8 +3,7 @@ import useAxios from "../../hooks/useAxios";
 import { BASE_URL, POSTS_PATH } from "../../constants/api/Api";
 
 function ReactPost(props) {
-  const reactionList = props.reactionList;
-  const reactionCount = reactionList.length;
+  const reactionsCount = props.reactionCount;
   const emojis = ["👍", "❤️", "😊", "🔥"];
   const { id } = useParams();
   const http = useAxios();
@@ -24,7 +23,7 @@ function ReactPost(props) {
 
   return (
     <div className="post-reaction-container">
-      <p>{reactionCount}</p>
+      <p>{reactionsCount.reactions}</p>
       {emojis.map((emoji) => (
         <div>
           <p onClick={emojiClicked}>{emoji}</p>

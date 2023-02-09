@@ -187,7 +187,7 @@ function Post() {
             </div>
 
             <div className="post-container_icons-wrapper">
-              <ReactPost reactionList={post.reactions} />
+              <ReactPost reactionCount={post._count} />
               <i className="fa-regular fa-share-from-square"></i>
             </div>
           </div>

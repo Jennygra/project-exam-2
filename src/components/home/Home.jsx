@@ -15,9 +15,7 @@ function Home() {
           </p>
         </div>
 
-        <div className="homepage-profiles_wrapper">
-          <ProfileList />
-        </div>
+        <div className="homepage-profiles_wrapper">{/* <ProfileList /> */}</div>
       </div>
 
       <div className="homepage-posts_container">
@@ -29,9 +27,7 @@ function Home() {
         </div>
 
         <div className="homepage-posts_wrapper">
-          <div className="homepage-posts_item">
-            <PostList />
-          </div>
+          <div className="homepage-posts_item">{/* <PostList /> */}</div>
         </div>
       </div>
     </>

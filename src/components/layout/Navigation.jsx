@@ -16,6 +16,9 @@ function Navigation() {
     if (doLogout) {
       setAuth(null);
       navigate.push("/");
+    } else {
+      window.event.preventDefault();
+      navigate.push("/home");
     }
   }
 

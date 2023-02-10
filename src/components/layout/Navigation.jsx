@@ -29,7 +29,7 @@ function Navigation() {
           <>
             <NavLink to="/home" exact>
               <Navbar.Brand to="/home" className="nav-link">
-                <img className="logo-nav" src={logo} alt="Addie logo"></img>
+                <img className="logo-nav" src={logo} alt="Addie logo" />
               </Navbar.Brand>
             </NavLink>
           </>
@@ -37,7 +37,7 @@ function Navigation() {
           <>
             <NavLink to="/" exact>
               <Navbar.Brand to="/" className="nav-link">
-                <img className="logo-nav" src={logo} alt="Addie logo"></img>
+                <img className="logo-nav" src={logo} alt="Addie logo" />
               </Navbar.Brand>
             </NavLink>
           </>

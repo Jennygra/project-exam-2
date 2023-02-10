@@ -55,11 +55,17 @@ function Profile() {
       <div className="profile-container">
         <div className="profile-header_wrapper">
           <div className="profile-header_banner">
-            <img src={checkImg(profile.banner, defaultBannerImg)} alt="#" />
+            <img
+              src={checkImg(profile.banner, defaultBannerImg)}
+              alt={profile.name + " profile banner"}
+            />
           </div>
 
           <div className="profile-header_profile-img">
-            <img src={checkImg(profile.avatar, defaultProfileImg)} alt="#" />
+            <img
+              src={checkImg(profile.avatar, defaultProfileImg)}
+              alt={profile.name + " profile image"}
+            />
           </div>
         </div>
 

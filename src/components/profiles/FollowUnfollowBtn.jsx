@@ -46,13 +46,23 @@ function FollowUnfollowBtn(props) {
     <>
       {isFollowed ? (
         <>
-          <Button variant="dark" type="button" onClick={unFollow}>
+          <Button
+            variant="dark"
+            type="button"
+            aria-label="Unfollow"
+            onClick={unFollow}
+          >
             Unfollow
           </Button>
         </>
       ) : (
         <>
-          <Button variant="dark" type="button" onClick={handleFollow}>
+          <Button
+            variant="dark"
+            type="button"
+            aria-label="Follow"
+            onClick={handleFollow}
+          >
             Follow
           </Button>
         </>

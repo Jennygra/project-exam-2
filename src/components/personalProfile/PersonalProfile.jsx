@@ -75,6 +75,7 @@ function PersonalProfile() {
             <Button
               variant="outline-secondary"
               onClick={() => editProfileSetModalShow(true)}
+              aria-label="Edit profile"
             >
               Edit profile
             </Button>
@@ -105,6 +106,7 @@ function PersonalProfile() {
             <Button
               variant="outline-secondary"
               onClick={() => makePostSetModalShow(true)}
+              aria-label="Make a post"
             >
               <i className="fa-regular fa-plus"></i>
               Make a post

@@ -9,7 +9,10 @@ function Banner() {
   return (
     <>
       <Card className="bg-dark text-white homepage-banner_container">
-        <Card.Img src={bannerImg} alt="Banner img" />
+        <Card.Img
+          src={bannerImg}
+          alt="A girl carry a light walking on a pink globe through star rain"
+        />
         <Card.ImgOverlay>
           <Card.Title>Hello, {auth.name}!</Card.Title>
         </Card.ImgOverlay>

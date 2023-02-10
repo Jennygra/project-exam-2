@@ -87,7 +87,7 @@ function EditProfile(props) {
             </Form.Group>
 
             <Form.Group className="text-center">
-              <Button variant="dark" type="submit">
+              <Button variant="dark" type="submit" aria-label="Submit">
                 {submitting ? "Submitting..." : "Submit"}
               </Button>
             </Form.Group>

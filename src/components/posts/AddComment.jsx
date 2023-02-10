@@ -60,7 +60,7 @@ function AddComment(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
+      <Modal.Header closeButton aria-label="Close">
         <Modal.Title id="contained-modal-title-vcenter">
           Add a Comment
         </Modal.Title>
@@ -80,7 +80,7 @@ function AddComment(props) {
             </Form.Group>
 
             <Form.Group className="text-center">
-              <Button variant="dark" type="submit">
+              <Button variant="dark" type="submit" aria-label="Submit">
                 {submitting ? "Submitting..." : "Submit"}
               </Button>
             </Form.Group>

@@ -69,7 +69,7 @@ function EditPost(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
+      <Modal.Header closeButton aria-label="Close">
         <Modal.Title id="contained-modal-title-vcenter">
           Update post
         </Modal.Title>
@@ -107,7 +107,7 @@ function EditPost(props) {
             </Form.Group>
 
             <Form.Group className="text-center">
-              <Button variant="dark" type="submit">
+              <Button variant="dark" type="submit" aria-label="Submit">
                 {submitting ? "Updating..." : "Update"}
               </Button>
 

@@ -1,6 +1,6 @@
 import Banner from "./Banner";
-import ProfileList from "../profiles/ProfileList";
-import PostList from "../posts/PostList";
+import DisplayPostList from "../posts/DisplayPostList";
+import DisplayProfilesList from "../profiles/DisplayProfilesList";
 
 function Home() {
   return (
@@ -15,7 +15,9 @@ function Home() {
           </p>
         </div>
 
-        <div className="homepage-profiles_wrapper">{/* <ProfileList /> */}</div>
+        <div className="homepage-profiles_wrapper">
+          <DisplayProfilesList />
+        </div>
       </div>
 
       <div className="homepage-posts_container">
@@ -27,7 +29,10 @@ function Home() {
         </div>
 
         <div className="homepage-posts_wrapper">
-          <div className="homepage-posts_item">{/* <PostList /> */}</div>
+          <div className="homepage-posts_item">
+            {" "}
+            <DisplayPostList />
+          </div>
         </div>
       </div>
     </>

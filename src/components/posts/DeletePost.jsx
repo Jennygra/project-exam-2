@@ -30,7 +30,12 @@ function DeletePost() {
   }
 
   return (
-    <Button variant="dark" type="button" onClick={handleDelete}>
+    <Button
+      variant="dark"
+      type="button"
+      aria-label="Delete"
+      onClick={handleDelete}
+    >
       {error ? "Error" : "Delete"}
     </Button>
   );

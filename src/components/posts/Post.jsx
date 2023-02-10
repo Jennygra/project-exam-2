@@ -17,7 +17,7 @@ function Post() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [modalShow, setModalShow] = useState(false);
-  const [editProfileModalShow, setEditProfileModalShow] = useState(false);
+  const [editPostModalShow, setEditPostModalShow] = useState(false);
   const [auth, setAuth] = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -75,7 +75,7 @@ function Post() {
                 <img
                   src={checkImg(post.author.avatar, defaultProfileImg)}
                   alt={post.author.name + "profile image"}
-                ></img>
+                />
               </a>
             </div>
 
@@ -88,14 +88,15 @@ function Post() {
             <div className="post-container_details_btn">
               <Button
                 variant="outline-secondary"
-                onClick={() => setEditProfileModalShow(true)}
+                aria-label="Edit post"
+                onClick={() => setEditPostModalShow(true)}
               >
-                <i className="fa-regular fa-plus"></i>
+                <i className="fa-regular fa-plus" aria-label="Edit post"></i>
                 Edit post
               </Button>
               <EditPost
-                show={editProfileModalShow}
-                onHide={() => setEditProfileModalShow(false)}
+                show={editPostModalShow}
+                onHide={() => setEditPostModalShow(false)}
               />
             </div>
           </div>
@@ -112,9 +113,13 @@ function Post() {
               <div>
                 <Button
                   variant="outline-dark"
+                  aria-label="Write a comment"
                   onClick={() => setModalShow(true)}
                 >
-                  <i className="fa-regular fa-plus"></i>
+                  <i
+                    className="fa-regular fa-plus"
+                    aria-label="Write a comment"
+                  />
                   Write a comment
                 </Button>
 
@@ -126,8 +131,15 @@ function Post() {
             </div>
 
             <div className="post-container_icons-wrapper">
-              <i className="fa-regular fa-face-smile" onClick={ReactPost}></i>
-              <i className="fa-regular fa-share-from-square"></i>
+              <i
+                className="fa-regular fa-face-smile"
+                aria-label="React to post"
+                onClick={ReactPost}
+              />
+              <i
+                className="fa-regular fa-share-from-square"
+                aria-label="Share"
+              />
             </div>
           </div>
         </div>
@@ -150,7 +162,7 @@ function Post() {
                 <img
                   src={checkImg(post.author.avatar, defaultProfileImg)}
                   alt={post.author.name + "profile image"}
-                ></img>
+                />
               </a>
             </div>
 
@@ -173,9 +185,13 @@ function Post() {
               <div>
                 <Button
                   variant="outline-dark"
+                  aria-label="Add a comment"
                   onClick={() => setModalShow(true)}
                 >
-                  <i className="fa-regular fa-plus"></i>
+                  <i
+                    className="fa-regular fa-plus"
+                    aria-label="Write a comment"
+                  />
                   Write a comment
                 </Button>
 
@@ -188,7 +204,10 @@ function Post() {
 
             <div className="post-container_icons-wrapper">
               <ReactPost reactionCount={post._count} />
-              <i className="fa-regular fa-share-from-square"></i>
+              <i
+                className="fa-regular fa-share-from-square"
+                aria-label="Share"
+              />
             </div>
           </div>
         </div>

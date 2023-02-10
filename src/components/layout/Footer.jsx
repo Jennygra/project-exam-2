@@ -9,7 +9,7 @@ function Footer() {
         <Container>
           <NavLink to="/" exact>
             <Navbar.Brand to="/" className="nav-link">
-              <img className="logo-nav" src={logo} alt="Addie logo"></img>
+              <img className="logo-nav" src={logo} alt="Addie logo" />
             </Navbar.Brand>
           </NavLink>
           <p>&copy; AdD. 2023. All rights reserved.</p>

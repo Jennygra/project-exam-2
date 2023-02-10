@@ -95,7 +95,7 @@ function RegisterForm() {
         </Form.Group>
 
         <Form.Group className="text-center">
-          <Button variant="outline-dark" type="submit">
+          <Button variant="outline-dark" aria-label="Submit" type="submit">
             {submitting ? "Submitting..." : "Register"}
           </Button>
           <p>

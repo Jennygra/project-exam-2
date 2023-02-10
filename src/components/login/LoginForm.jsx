@@ -67,7 +67,7 @@ function LoginForm() {
         </Form.Group>
         <br />
         <Form.Group className="text-center">
-          <Button variant="outline-dark" type="submit">
+          <Button variant="outline-dark" type="submit" aria-label="Login">
             {submitting ? "Logging in..." : "Login"}
           </Button>
           <p>

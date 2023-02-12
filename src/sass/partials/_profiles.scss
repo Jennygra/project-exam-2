@@ -10,10 +10,14 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-end;
-    gap: 1rem;
+    gap: 3rem;
 
     hr {
       margin: 1rem 0rem 0rem 0rem;
+    }
+
+    @media screen and (max-width: 844px) {
+      gap: 1rem;
     }
   }
 

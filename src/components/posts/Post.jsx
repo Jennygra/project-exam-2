@@ -11,6 +11,7 @@ import ReactPost from "./ReactPost";
 import checkImg from "../../context/CheckImg";
 import defaultPostImg from "../../images/no-img.jpg";
 import defaultProfileImg from "../../images/default-user-img.jpg";
+import FormatDate from "../../context/FormatDate";
 
 function Post() {
   const [post, setPost] = useState([]);
@@ -36,7 +37,6 @@ function Post() {
       try {
         const response = await http.get(url);
         setPost(response.data);
-        console.log(response.data);
       } catch (error) {
         setError(error.toString());
       } finally {
@@ -61,6 +61,22 @@ function Post() {
   if (auth.name === post.author.name) {
     return (
       <>
+        <div className="post__author-container">
+          <div className="post__author-img">
+            <a href={`/profile/${post.author.name}`}>
+              <img
+                src={checkImg(post.author.avatar, defaultProfileImg)}
+                alt={post.author.name + "profile image"}
+              />
+            </a>
+          </div>
+
+          <div>
+            <h4>{post.author.name}</h4>
+            <p>{FormatDate(post.created)}</p>
+          </div>
+        </div>
+
         <div className="post-container">
           <div className="post-container_img-wrapper">
             <img
@@ -70,18 +86,8 @@ function Post() {
           </div>
 
           <div className="post-container_details-wrapper">
-            <div className="post-container_details_img">
-              <a href={`/profile/${post.author.name}`}>
-                <img
-                  src={checkImg(post.author.avatar, defaultProfileImg)}
-                  alt={post.author.name + "profile image"}
-                />
-              </a>
-            </div>
-
             <div className="post-container_details_titles">
-              <h4>{post.author.name}</h4>
-              <h6>{post.title}</h6>
+              <h5>{post.title}</h5>
               <p>{post.body}</p>
             </div>
 
@@ -108,7 +114,7 @@ function Post() {
               <p>Comment</p>
             </div>
 
-            <div>
+            <div className="post-container_comment-item">
               <GetComment />
               <div>
                 <Button
@@ -131,11 +137,7 @@ function Post() {
             </div>
 
             <div className="post-container_icons-wrapper">
-              <i
-                className="fa-regular fa-face-smile"
-                aria-label="React to post"
-                onClick={ReactPost}
-              />
+              <ReactPost reactionCount={post.reactions} />
               <i
                 className="fa-regular fa-share-from-square"
                 aria-label="Share"
@@ -148,6 +150,22 @@ function Post() {
   } else {
     return (
       <>
+        <div className="post__author-container">
+          <div className="post__author-img">
+            <a href={`/profile/${post.author.name}`}>
+              <img
+                src={checkImg(post.author.avatar, defaultProfileImg)}
+                alt={post.author.name + "profile image"}
+              />
+            </a>
+          </div>
+
+          <div>
+            <h4>{post.author.name}</h4>
+            <p>{FormatDate(post.created)}</p>
+          </div>
+        </div>
+
         <div className="post-container">
           <div className="post-container_img-wrapper">
             <img
@@ -157,18 +175,8 @@ function Post() {
           </div>
 
           <div className="post-container_details-wrapper">
-            <div className="post-container_details_img">
-              <a href={`/profile/${post.author.name}`}>
-                <img
-                  src={checkImg(post.author.avatar, defaultProfileImg)}
-                  alt={post.author.name + "profile image"}
-                />
-              </a>
-            </div>
-
             <div className="post-container_details_titles">
-              <h4>{post.author.name}</h4>
-              <h6>{post.title}</h6>
+              <h5>{post.title}</h5>
               <p>{post.body}</p>
             </div>
           </div>
@@ -180,7 +188,7 @@ function Post() {
               <p>Comment</p>
             </div>
 
-            <div>
+            <div className="post-container_comment-item">
               <GetComment />
               <div>
                 <Button
@@ -203,7 +211,7 @@ function Post() {
             </div>
 
             <div className="post-container_icons-wrapper">
-              <ReactPost reactionCount={post._count} />
+              <ReactPost reactionCount={post.reactions} />
               <i
                 className="fa-regular fa-share-from-square"
                 aria-label="Share"

@@ -63,6 +63,18 @@
   justify-content: space-between;
   margin: 3.5rem auto;
   align-items: baseline;
+
+  input {
+    padding: 0.3rem 2.5rem !important;
+    border: 1px solid $colour-primary !important;
+  }
+
+  @media screen and (max-width: 600px) {
+    .posts-heading_input,
+    input {
+      width: 100%;
+    }
+  }
 }
 
 .posts-postlist_wrapper {

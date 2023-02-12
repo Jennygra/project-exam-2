@@ -13,7 +13,7 @@ function ProfileList({ searchResults }) {
     </div>
   );
 
-  return <div>{content}</div>;
+  return <div className="profiles-page-container">{content}</div>;
 }
 
 export default ProfileList;

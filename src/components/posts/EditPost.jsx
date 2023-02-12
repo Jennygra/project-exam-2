@@ -12,16 +12,17 @@ import { Button, Form, Modal } from "react-bootstrap";
 
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
-  media: yup.string().url(),
-  body: yup.string(),
-  tags: yup.string(),
 });
 
 function EditPost(props) {
+  const [post, setPost] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [updatePostError, setUpdatePostError] = useState(null);
   const [submitSuccessful, setSubmit] = useState(false);
   const [auth, setAuth] = useContext(AuthContext);
+  const [tags, setTags] = useState([]);
 
   const { id } = useParams();
   const url = BASE_URL + POSTS_PATH + "/" + id;
@@ -37,16 +38,27 @@ function EditPost(props) {
     resolver: yupResolver(schema),
   });
 
+  useEffect(() => {
+    (async function fetchData() {
+      try {
+        const response = await http.get(url);
+        setPost(response.data);
+      } catch (error) {
+        setError(error.toString());
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, []);
+
   async function onSubmit(data) {
     setSubmitting(true);
     setUpdatePostError(null);
 
-    console.log(data);
-
     try {
       const response = await http.put(url, data);
       console.log("Update profile response", response.data);
-      navigate(`/personalprofile/${auth.name}`);
+      window.location.reload();
     } catch (error) {
       console.log("error", error);
       setUpdatePostError(error.toString());
@@ -61,6 +73,8 @@ function EditPost(props) {
       reset();
     }
   }, [isSubmitSuccessful, reset]);
+
+  console.log(tags);
 
   return (
     <Modal
@@ -80,13 +94,16 @@ function EditPost(props) {
           <fieldset disabled={submitting}>
             <Form.Group>
               <Form.Label>Title</Form.Label>
-              <Form.Control {...register("title", { required: true })} />
+              <Form.Control
+                defaultValue={post.title}
+                {...register("title", { required: true })}
+              />
               {errors.title && <span>{errors.title.message}</span>}
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Media</Form.Label>
-              <Form.Control {...register("media", { required: true })} />
+              <Form.Control defaultValue={post.media} {...register("media")} />
               {errors.media && <span>{errors.media.message}</span>}
             </Form.Group>
 
@@ -95,18 +112,24 @@ function EditPost(props) {
               <Form.Control
                 as="textarea"
                 rows={3}
-                {...register("body", { required: true })}
+                defaultValue={post.body}
+                {...register("body")}
               />
               {errors.body && <span>{errors.body.message}</span>}
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Tags</Form.Label>
-              <TagsInput {...register("tags", { required: true })} />
+              <TagsInput
+                tags={tags}
+                setTags={setTags}
+                defaultValue={post.tags}
+                {...register("tags")}
+              />
               {errors.tags && <span>{errors.tags.message}</span>}
             </Form.Group>
 
-            <Form.Group className="text-center">
+            <Form.Group className="text-center edit-post__btns">
               <Button variant="dark" type="submit" aria-label="Submit">
                 {submitting ? "Updating..." : "Update"}
               </Button>

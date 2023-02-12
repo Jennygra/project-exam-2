@@ -1,9 +1,6 @@
-import { useState } from "react";
 import { Form } from "react-bootstrap";
 
-function TagsInput() {
-  const [tags, setTags] = useState([]);
-
+function TagsInput({ tags, setTags }) {
   function handleKeyDown(e) {
     if (e.code !== "Space") return;
     const value = e.target.value;
@@ -16,8 +13,6 @@ function TagsInput() {
   function removeTag(index) {
     setTags(tags.filter((el, i) => i !== index));
   }
-
-  console.log("This is tags", tags);
 
   return (
     <div className="tags-input-container">

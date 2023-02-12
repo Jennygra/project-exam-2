@@ -13,7 +13,7 @@ function PostList({ searchResults }) {
     </div>
   );
 
-  return <div>{content}</div>;
+  return <div className="posts-postlist_wrapper">{content}</div>;
 }
 
 export default PostList;

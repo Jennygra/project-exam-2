@@ -13,7 +13,7 @@ const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
   media: yup.string().url(),
   body: yup.string(),
-  tags: yup.object().shape({}),
+  tags: yup.object(),
 });
 
 function MakePost(props) {
@@ -21,6 +21,7 @@ function MakePost(props) {
   const [makePostError, setMakePostError] = useState(null);
   const [submitSuccessful, setSubmit] = useState(false);
   const [auth, setAuth] = useContext(AuthContext);
+  const [tags, setTags] = useState([]);
 
   const url = BASE_URL + POSTS_PATH;
   const http = useAxios();
@@ -39,12 +40,11 @@ function MakePost(props) {
     setSubmitting(true);
     setMakePostError(null);
 
-    console.log(data);
-
     try {
       const response = await http.post(url, data);
       console.log("Make a post response", response.data);
       navigate(`/personalprofile/${auth.name}`);
+      window.location.reload();
     } catch (error) {
       console.log("error", error);
       setMakePostError(error.toString());
@@ -59,6 +59,8 @@ function MakePost(props) {
       reset();
     }
   }, [isSubmitSuccessful, reset]);
+
+  console.log("This is tags", tags);
 
   return (
     <Modal
@@ -84,23 +86,19 @@ function MakePost(props) {
 
             <Form.Group>
               <Form.Label>Media</Form.Label>
-              <Form.Control {...register("media", { required: true })} />
+              <Form.Control {...register("media")} />
               {errors.media && <span>{errors.media.message}</span>}
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Write a caption</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                {...register("body", { required: true })}
-              />
+              <Form.Control as="textarea" rows={3} {...register("body")} />
               {errors.body && <span>{errors.body.message}</span>}
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Tags</Form.Label>
-              <TagsInput {...register("tags", { required: true })} />
+              <TagsInput tags={tags} setTags={setTags} {...register("tags")} />
               {errors.tags && <span>{errors.tags.message}</span>}
             </Form.Group>
 

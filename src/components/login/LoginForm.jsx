@@ -71,7 +71,7 @@ function LoginForm() {
             {submitting ? "Logging in..." : "Login"}
           </Button>
           <p>
-            Not registered? <a href="/resgister">Register here</a>
+            Not registered? <a href="/register">Register here</a>
           </p>
         </Form.Group>
       </fieldset>

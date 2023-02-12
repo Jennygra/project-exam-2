@@ -9,6 +9,11 @@
     flex-basis: 100%;
     margin: 0;
   }
+
+  @media screen and (max-width: 640px) {
+    max-width: none;
+    width: 100%;
+  }
 }
 
 .comment-img {
@@ -17,11 +22,19 @@
   overflow: hidden;
   border-radius: 50%;
   box-sizing: border-box;
+  box-shadow: $colour-ui-shadow;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+}
+
+.comment-details {
+  a {
+    text-decoration: none;
+    color: $colour-primary;
   }
 }

@@ -38,6 +38,7 @@ form {
   }
 }
 
+/* Edit Post on Post page */
 /* Styling for Tags input on update post */
 .tags-input-container {
   max-width: 40rem;
@@ -88,4 +89,11 @@ form {
     max-width: 100%;
     word-wrap: break-word;
   }
+}
+
+.edit-post__btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 0.3rem;
 }

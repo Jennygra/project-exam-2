@@ -53,9 +53,7 @@ function Profiles() {
         </div>
       </div>
 
-      <div className="profiles-page-container">
-        <ProfileList searchResults={searchResults} />
-      </div>
+      <ProfileList searchResults={searchResults} />
     </>
   );
 }

@@ -51,9 +51,7 @@ function Posts() {
         </div>
       </div>
 
-      <div className="posts-postlist_wrapper">
-        <PostList searchResults={searchResults} />
-      </div>
+      <PostList searchResults={searchResults} />
     </>
   );
 }

@@ -29,6 +29,7 @@ function Profile() {
       try {
         const response = await http.get(url);
         setProfile(response.data);
+        console.log(response.data);
       } catch (error) {
         setError(error.toString());
       } finally {

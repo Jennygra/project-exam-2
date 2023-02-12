@@ -15,13 +15,16 @@ const schema = yup.object().shape({
 });
 
 function EditProfile(props) {
+  const [profile, setProfile] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [updateProfileError, setUpdateProfileError] = useState(null);
   const [submitSuccessful, setSubmit] = useState(false);
   const [auth, setAuth] = useContext(AuthContext);
 
   const { name } = useParams();
-  const url = BASE_URL + PROFILE_PATH + "/" + name + "/media";
+  const url = BASE_URL + PROFILE_PATH + "/" + name;
 
   const http = useAxios();
   const navigate = useNavigate();
@@ -35,12 +38,25 @@ function EditProfile(props) {
     resolver: yupResolver(schema),
   });
 
+  useEffect(() => {
+    (async function fetchData() {
+      try {
+        const response = await http.get(url);
+        setProfile(response.data);
+      } catch (error) {
+        setError(error.toString());
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, []);
+
   async function onSubmit(data) {
     setSubmitting(true);
     setUpdateProfileError(null);
 
     try {
-      const response = await http.put(url, data);
+      const response = await http.put(url + "/media", data);
       console.log("Update profile response", response.data);
       navigate(`/personalprofile/${auth.name}`);
     } catch (error) {
@@ -76,13 +92,19 @@ function EditProfile(props) {
           <fieldset disabled={submitting}>
             <Form.Group>
               <Form.Label>Avatar</Form.Label>
-              <Form.Control {...register("avatar", { required: true })} />
+              <Form.Control
+                defaultValue={profile.avatar}
+                {...register("avatar")}
+              />
               {errors.media && <span>{errors.media.message}</span>}
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Banner</Form.Label>
-              <Form.Control {...register("banner", { required: true })} />
+              <Form.Control
+                defaultValue={profile.banner}
+                {...register("banner")}
+              />
               {errors.media && <span>{errors.media.message}</span>}
             </Form.Group>
 

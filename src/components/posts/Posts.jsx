@@ -39,7 +39,7 @@ function Posts() {
   if (error) {
     console.log(error);
     return (
-      <Alert variant="danger" className="error__msg">
+      <Alert variant="danger" className="alert_msg">
         ERROR: An error occured
       </Alert>
     );

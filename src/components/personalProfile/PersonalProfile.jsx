@@ -53,7 +53,7 @@ function PersonalProfile() {
 
   if (error) {
     return (
-      <Alert variant="danger" className="error__msg">
+      <Alert variant="danger" className="alert_msg">
         ERROR: An error occured, please try again
       </Alert>
     );
@@ -100,7 +100,7 @@ function PersonalProfile() {
           <div className="profile-counts_item">
             <p>{profile._count.posts} posts</p>
             <a href="/followers">{profile._count.followers} followers</a>
-            <p>{profile._count.following} following</p>
+            <a href="/following">{profile._count.following} following</a>
           </div>
           <hr />
         </div>

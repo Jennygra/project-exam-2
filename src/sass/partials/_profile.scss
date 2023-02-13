@@ -56,6 +56,16 @@
   display: flex;
   justify-content: space-evenly;
 
+  a {
+    text-decoration: none;
+    color: $colour-primary;
+
+    &:hover {
+      text-decoration: underline;
+      color: $colour-ui-primary;
+    }
+  }
+
   @media screen and (max-width: 500px) {
     flex-direction: column;
     text-align: center;

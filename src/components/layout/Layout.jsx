@@ -10,6 +10,7 @@ import Profiles from "../profiles/Profiles";
 import Profile from "../profiles/Profile";
 import PersonalProfile from "../personalProfile/PersonalProfile";
 import Followers from "../followers/Followers";
+import Following from "../following/Following";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 import { AuthProvider } from "../../context/AuthContext/authContext";
@@ -36,6 +37,7 @@ function Layout() {
               element={<PersonalProfile />}
             />
             <Route path="/followers" element={<Followers />} />
+            <Route path="/following" element={<Following />} />
           </Routes>
         </Container>
 

@@ -6,7 +6,7 @@ import { Alert, Spinner, Figure } from "react-bootstrap";
 import checkImg from "../../context/CheckImg";
 import img from "../../images/default-user-img.jpg";
 
-function Followers() {
+function Following() {
   const [auth, setAuth] = useContext(AuthContext);
   const [profile, setProfile] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -46,25 +46,25 @@ function Followers() {
     );
   }
 
-  if (profile.followers.length === 0) {
+  if (profile.following.length === 0) {
     return (
       <Alert variant="info" className="alert_msg">
-        You have no followers! Make a{" "}
-        <Alert.Link href={"/personalprofile/" + auth.name}>post</Alert.Link> to
-        attract other users to follow you.
+        You are not following anyone! Go to{" "}
+        <Alert.Link href="/profiles">profiles</Alert.Link> for find some one to
+        follow.
       </Alert>
     );
   }
 
   return (
     <>
-      <div className="followers__heading">
-        <h1>Followers</h1>
+      <div className="following__heading">
+        <h1>Following</h1>
       </div>
 
       <div className="profiles-page-container">
-        {profile.followers.map((profiles) => (
-          <Figure key={profiles.name} className="followers__container">
+        {profile.following.map((profiles) => (
+          <Figure key={profiles.name} className="following__container">
             <div className="profile-img_wrapper">
               <a href={`/profile/${profiles.name}`}>
                 <Figure.Image
@@ -89,4 +89,4 @@ function Followers() {
   );
 }
 
-export default Followers;
+export default Following;

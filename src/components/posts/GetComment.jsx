@@ -46,7 +46,7 @@ function GetComment() {
 
   if (error) {
     return (
-      <Alert variant="secondary" className="error__msg">
+      <Alert variant="secondary" className="alert_msg">
         ERROR: An error occured
       </Alert>
     );

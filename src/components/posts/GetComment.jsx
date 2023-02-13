@@ -37,10 +37,10 @@ function GetComment() {
 
   if (loading) {
     return (
-      <>
+      <div className="spinner">
         <Spinner animation="grow" variant="secondary" />
         Loading...
-      </>
+      </div>
     );
   }
 

@@ -42,10 +42,10 @@ function PersonalProfile() {
 
   if (loading) {
     return (
-      <>
+      <div className="spinner">
         <Spinner animation="grow" variant="secondary" />
         Loading...
-      </>
+      </div>
     );
   }
 
@@ -101,8 +101,10 @@ function PersonalProfile() {
           <hr />
         </div>
 
-        <div className="profile-posts_wrapper personal_profile-posts_wrapper">
-          <ProfilePosts />
+        <div className="personal_profile-posts_container">
+          <div className="profile-posts_wrapper">
+            <ProfilePosts />
+          </div>
 
           <div className="personal_profile-posts_btn">
             <Button

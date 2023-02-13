@@ -99,12 +99,23 @@
 }
 
 //Personal profile styling
+.personal_profile-posts_container {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .personal_profile-posts_btn {
   flex-basis: 100%;
   text-align: center;
 
   button {
     width: 100%;
+    max-width: 1000px;
+    margin: 2rem auto;
+
+    &:hover {
+      background-color: $colour-primary;
+    }
   }
 }
 

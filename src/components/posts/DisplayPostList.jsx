@@ -27,10 +27,10 @@ function DisplayPostList() {
 
   if (loading) {
     return (
-      <>
+      <div className="spinner">
         <Spinner animation="grow" variant="secondary" />
         Loading...
-      </>
+      </div>
     );
   }
 

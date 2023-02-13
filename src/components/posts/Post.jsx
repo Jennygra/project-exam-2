@@ -48,10 +48,10 @@ function Post() {
 
   if (loading) {
     return (
-      <>
+      <div className="spinner">
         <Spinner animation="grow" variant="secondary" />
         Loading...
-      </>
+      </div>
     );
   }
 
@@ -219,7 +219,7 @@ function Post() {
                 rel="noreferrer"
               >
                 <i
-                  className="fa-regular fa-share-from-square"
+                  className="fa-regular fa-share-from-square share__btn"
                   aria-label="Share"
                 />
               </a>

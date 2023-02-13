@@ -17,11 +17,11 @@ function ProfilesSearchBar({ profiles, setSearchResults }) {
 
   return (
     <>
-      <form className="serach__form" onSubmit={handleSubmit}>
+      <form className="search__form" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Search profile by name..."
-          className="serach__input"
+          className="search__input"
           onChange={handleSearchChange}
         />
       </form>

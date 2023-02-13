@@ -17,11 +17,11 @@ function SearchBar({ posts, setSearchResults }) {
 
   return (
     <>
-      <form className="serach__form" onSubmit={handleSubmit}>
+      <form className="search__form" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Search post by id..."
-          className="serach__input"
+          className="search__input"
           onChange={handleSearchChange}
         />
       </form>

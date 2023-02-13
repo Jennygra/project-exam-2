@@ -47,10 +47,12 @@ function ReactPost(props) {
           menuOpen ? "open" : ""
         }`}
         onClick={() => setMenuOpen(!menuOpen)}
-      />
+      >
+        {"  "}
+        {counts}
+      </i>
 
       <ul className={`menu-items ${menuOpen ? "open" : ""}`}>
-        <p>{counts}</p>
         {emojis.map((emoji) => (
           <li className="menu-item" onClick={emojiClicked}>
             {emoji}

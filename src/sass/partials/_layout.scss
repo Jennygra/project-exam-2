@@ -18,3 +18,11 @@ a {
     text-decoration: underline;
   }
 }
+
+.spinner {
+  margin: 3rem auto;
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  align-items: center;
+}

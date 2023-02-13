@@ -9,6 +9,7 @@ import Post from "../posts/Post";
 import Profiles from "../profiles/Profiles";
 import Profile from "../profiles/Profile";
 import PersonalProfile from "../personalProfile/PersonalProfile";
+import Followers from "../followers/Followers";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 import { AuthProvider } from "../../context/AuthContext/authContext";
@@ -34,6 +35,7 @@ function Layout() {
               exact
               element={<PersonalProfile />}
             />
+            <Route path="/followers" element={<Followers />} />
           </Routes>
         </Container>
 

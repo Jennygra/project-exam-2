@@ -9,6 +9,7 @@ import EditProfile from "./EditProfile";
 import MakePost from "./MakePost";
 import defaultProfileImg from "../../images/default-user-img.jpg";
 import defaultBannerImg from "../../images/no-img.jpg";
+import Followers from "../followers/Followers";
 
 function PersonalProfile() {
   const [profile, setProfile] = useState([]);
@@ -19,7 +20,7 @@ function PersonalProfile() {
 
   const navigate = useNavigate();
   const { name } = useParams();
-  const url = PROFILE_PATH + "/" + name;
+  const url = PROFILE_PATH + "/" + name + "?_following=true&_followers=true";
 
   const http = useAxios();
 
@@ -32,6 +33,7 @@ function PersonalProfile() {
       try {
         const response = await http.get(url);
         setProfile(response.data);
+        console.log(response.data);
       } catch (error) {
         setError(error.toString());
       } finally {
@@ -51,7 +53,9 @@ function PersonalProfile() {
 
   if (error) {
     return (
-      <Alert variant="danger">ERROR: An error occured, please try again</Alert>
+      <Alert variant="danger" className="error__msg">
+        ERROR: An error occured, please try again
+      </Alert>
     );
   }
 
@@ -95,7 +99,7 @@ function PersonalProfile() {
 
           <div className="profile-counts_item">
             <p>{profile._count.posts} posts</p>
-            <p>{profile._count.followers} followers</p>
+            <a href="/followers">{profile._count.followers} followers</a>
             <p>{profile._count.following} following</p>
           </div>
           <hr />

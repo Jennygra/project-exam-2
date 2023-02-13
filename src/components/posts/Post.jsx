@@ -56,7 +56,11 @@ function Post() {
   }
 
   if (error) {
-    return <Alert variant="danger">ERROR: An error occured</Alert>;
+    return (
+      <Alert variant="danger" className="error__msg">
+        ERROR: An error occured
+      </Alert>
+    );
   }
 
   if (auth.name === post.author.name) {

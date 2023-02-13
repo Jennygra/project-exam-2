@@ -41,7 +41,7 @@ function ReactPost(props) {
   }
 
   return (
-    <div className="post-reaction-container">
+    <div className="reaction-wrapper">
       <i
         className={`fa-regular fa-face-smile menu-icon ${
           menuOpen ? "open" : ""

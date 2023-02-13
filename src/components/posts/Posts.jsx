@@ -38,7 +38,11 @@ function Posts() {
 
   if (error) {
     console.log(error);
-    return <Alert variant="danger">ERROR: An error occured</Alert>;
+    return (
+      <Alert variant="danger" className="error__msg">
+        ERROR: An error occured
+      </Alert>
+    );
   }
 
   return (

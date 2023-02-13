@@ -64,12 +64,11 @@
 .post-container_icons-wrapper {
   display: flex;
   gap: 1rem;
+  align-items: baseline;
 }
 
-.post-reaction-container {
+.reaction-wrapper {
   position: relative;
-  display: flex;
-  align-items: baseline;
 }
 
 .menu-icon {

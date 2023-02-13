@@ -45,7 +45,11 @@ function GetComment() {
   }
 
   if (error) {
-    return <Alert variant="secondary">ERROR: An error occured</Alert>;
+    return (
+      <Alert variant="secondary" className="error__msg">
+        ERROR: An error occured
+      </Alert>
+    );
   }
 
   if (comment.comments.length === 0) {

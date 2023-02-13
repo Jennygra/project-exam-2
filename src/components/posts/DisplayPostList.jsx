@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 import { POSTS_PATH } from "../../constants/api/Api";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Alert } from "react-bootstrap";
 import checkImg from "../../context/CheckImg";
 import img from "../../images/no-img.jpg";
-import ReactPost from "./ReactPost";
 
 function DisplayPostList() {
   const [posts, setPosts] = useState([]);
@@ -36,8 +35,7 @@ function DisplayPostList() {
   }
 
   if (error) {
-    console.log(error);
-    return <div>ERROR: An error occured</div>;
+    return <Alert variant="danger">ERROR: An error occured</Alert>;
   }
 
   return (

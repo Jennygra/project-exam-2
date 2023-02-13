@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 import { PROFILE_PATH } from "../../constants/api/Api";
 import ProfilesSearchBar from "./ProfilesSearchBar";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Alert } from "react-bootstrap";
 import ProfileList from "./ProfileList";
 
 function Profiles() {
@@ -37,7 +37,7 @@ function Profiles() {
   }
 
   if (error) {
-    return <div>ERROR: An error occured</div>;
+    return <Alert variant="danger">ERROR: An error occured</Alert>;
   }
 
   return (

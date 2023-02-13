@@ -1,12 +1,10 @@
-import { useState, useEffect, useContext } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
-import AuthContext from "../../context/AuthContext/authContext";
 import { BASE_URL, POSTS_PATH } from "../../constants/api/Api";
-import { Button, Form, Modal } from "react-bootstrap";
+import { Button, Form, Modal, Alert } from "react-bootstrap";
 import TagsInput from "../posts/TagsInput";
 
 const schema = yup.object().shape({
@@ -19,19 +17,15 @@ const schema = yup.object().shape({
 function MakePost(props) {
   const [submitting, setSubmitting] = useState(false);
   const [makePostError, setMakePostError] = useState(null);
-  const [submitSuccessful, setSubmit] = useState(false);
-  const [auth, setAuth] = useContext(AuthContext);
   const [tags, setTags] = useState([]);
 
   const url = BASE_URL + POSTS_PATH;
   const http = useAxios();
-  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
-    reset,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -42,8 +36,6 @@ function MakePost(props) {
 
     try {
       const response = await http.post(url, data);
-      console.log("Make a post response", response.data);
-      navigate(`/personalprofile/${auth.name}`);
       window.location.reload();
     } catch (error) {
       console.log("error", error);
@@ -52,15 +44,6 @@ function MakePost(props) {
       setSubmitting(false);
     }
   }
-
-  useEffect(() => {
-    if (isSubmitSuccessful) {
-      setSubmit(true);
-      reset();
-    }
-  }, [isSubmitSuccessful, reset]);
-
-  console.log("This is tags", tags);
 
   return (
     <Modal
@@ -76,30 +59,40 @@ function MakePost(props) {
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          {makePostError && <div>Error: Failed to make a post</div>}
+          {makePostError && (
+            <Alert variant="danger">Error: Failed to make a post</Alert>
+          )}
           <fieldset disabled={submitting}>
             <Form.Group>
               <Form.Label>Title</Form.Label>
               <Form.Control {...register("title", { required: true })} />
-              {errors.title && <span>{errors.title.message}</span>}
+              {errors.title && (
+                <Alert variant="warning">{errors.title.message}</Alert>
+              )}
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Media</Form.Label>
               <Form.Control {...register("media")} />
-              {errors.media && <span>{errors.media.message}</span>}
+              {errors.media && (
+                <Alert variant="warning">{errors.media.message}</Alert>
+              )}
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Write a caption</Form.Label>
               <Form.Control as="textarea" rows={3} {...register("body")} />
-              {errors.body && <span>{errors.body.message}</span>}
+              {errors.body && (
+                <Alert variant="warning">{errors.body.message}</Alert>
+              )}
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Tags</Form.Label>
               <TagsInput tags={tags} setTags={setTags} {...register("tags")} />
-              {errors.tags && <span>{errors.tags.message}</span>}
+              {errors.tags && (
+                <Alert variant="warning">{errors.tags.message}</Alert>
+              )}
             </Form.Group>
 
             <Form.Group className="text-center">

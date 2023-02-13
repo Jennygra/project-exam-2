@@ -1,4 +1,5 @@
 import DisplayProfiles from "./DisplayProfiles";
+import { Alert } from "react-bootstrap";
 
 function ProfileList({ searchResults }) {
   const results = searchResults.map((profiles) => (
@@ -9,7 +10,7 @@ function ProfileList({ searchResults }) {
     results
   ) : (
     <div>
-      <p>No matching profile</p>
+      <Alert variant="dark">No matching profile</Alert>
     </div>
   );
 

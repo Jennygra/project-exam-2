@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 import { POSTS_PATH } from "../../constants/api/Api";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Alert } from "react-bootstrap";
 import SearchBar from "./SearchBar";
 import PostList from "./PostList";
 
@@ -38,7 +38,7 @@ function Posts() {
 
   if (error) {
     console.log(error);
-    return <div>ERROR: An error occured</div>;
+    return <Alert variant="danger">ERROR: An error occured</Alert>;
   }
 
   return (

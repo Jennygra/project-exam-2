@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { BASE_URL, REGISTER_PATH } from "../../constants/api/Api";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 
 const url = BASE_URL + REGISTER_PATH;
 
@@ -68,30 +68,38 @@ function RegisterForm() {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      {resgisterError && <div>Register failed; profile already exist.</div>}
+      {resgisterError && (
+        <Alert variant="warning">Register failed: profile already exist.</Alert>
+      )}
       {submitSuccessful && (
-        <div>
+        <Alert variant="success">
           Profile was made, please go to{" "}
-          <a href="/login">login page to login</a>
-        </div>
+          <Alert.Link href="/login">login page to login</Alert.Link>
+        </Alert>
       )}
       <fieldset disabled={submitting}>
         <Form.Group>
           <Form.Label>Name</Form.Label>
           <Form.Control {...register("name", { required: true })} />
-          {errors.name && <span>{errors.name.message}</span>}
+          {errors.name && (
+            <Alert variant="warning">{errors.name.message}</Alert>
+          )}
         </Form.Group>
 
         <Form.Group>
           <Form.Label>Email</Form.Label>
           <Form.Control {...register("email", { required: true })} />
-          {errors.email && <span>{errors.email.message}</span>}
+          {errors.email && (
+            <Alert variant="warning">{errors.email.message}</Alert>
+          )}
         </Form.Group>
 
         <Form.Group>
           <Form.Label>Password</Form.Label>
           <Form.Control {...register("password", { required: true })} />
-          {errors.password && <span>{errors.password.message}</span>}
+          {errors.password && (
+            <Alert variant="warning">{errors.password.message}</Alert>
+          )}
         </Form.Group>
 
         <Form.Group className="text-center">

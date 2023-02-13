@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { PROFILE_PATH } from "../../constants/api/Api";
 import useAxios from "../../hooks/useAxios";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Alert } from "react-bootstrap";
 import checkImg from "../../context/CheckImg";
 import img from "../../images/no-img.jpg";
 
@@ -39,7 +39,7 @@ function ProfilePosts() {
   }
 
   if (error) {
-    return <div>ERROR: An error occured</div>;
+    return <Alert variant="secondary">ERROR: An error occured</Alert>;
   }
 
   if (profilePosts.length === 0) {

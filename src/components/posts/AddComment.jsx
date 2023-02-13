@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
 import { useParams } from "react-router-dom";
 import { BASE_URL, POSTS_PATH } from "../../constants/api/Api";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Alert } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 
 const schema = yup.object().shape({
@@ -67,7 +67,11 @@ function AddComment(props) {
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          {commentError && <div>Error: Your comment was not submitted</div>}
+          {commentError && (
+            <Alert variant="danger">
+              Error: Your comment was not submitted
+            </Alert>
+          )}
           <fieldset disabled={submitting}>
             <Form.Group>
               <Form.Control
@@ -76,7 +80,9 @@ function AddComment(props) {
                 placeholder="Comment"
                 {...register("body", { required: true })}
               />
-              {errors.body && <span>{errors.body.message}</span>}
+              {errors.body && (
+                <Alert variant="warning">{errors.body.message}</Alert>
+              )}
             </Form.Group>
 
             <Form.Group className="text-center">

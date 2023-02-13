@@ -36,7 +36,7 @@ function DeletePost() {
       aria-label="Delete"
       onClick={handleDelete}
     >
-      {error ? "Error" : "Delete"}
+      {error ? "Error! Try again later" : "Delete"}
     </Button>
   );
 }

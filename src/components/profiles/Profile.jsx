@@ -4,7 +4,7 @@ import useAxios from "../../hooks/useAxios";
 import { PROFILE_PATH } from "../../constants/api/Api";
 import ProfilePosts from "./ProfilePosts";
 import FollowUnfollowBtn from "./FollowUnfollowBtn";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Alert } from "react-bootstrap";
 import checkImg from "../../context/CheckImg";
 import defaultProfileImg from "../../images/default-user-img.jpg";
 import defaultBannerImg from "../../images/no-img.jpg";
@@ -48,7 +48,7 @@ function Profile() {
   }
 
   if (error) {
-    return <div>ERROR: An error occured</div>;
+    return <Alert variant="danger">ERROR: An error occured</Alert>;
   }
 
   return (

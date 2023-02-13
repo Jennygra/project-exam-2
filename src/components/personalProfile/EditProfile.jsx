@@ -1,12 +1,11 @@
-import { useState, useEffect, useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
-import AuthContext from "../../context/AuthContext/authContext";
 import { BASE_URL, PROFILE_PATH } from "../../constants/api/Api";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Alert } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 
 const schema = yup.object().shape({
@@ -16,24 +15,19 @@ const schema = yup.object().shape({
 
 function EditProfile(props) {
   const [profile, setProfile] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [updateProfileError, setUpdateProfileError] = useState(null);
-  const [submitSuccessful, setSubmit] = useState(false);
-  const [auth, setAuth] = useContext(AuthContext);
 
   const { name } = useParams();
   const url = BASE_URL + PROFILE_PATH + "/" + name;
 
   const http = useAxios();
-  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
-    reset,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -45,8 +39,6 @@ function EditProfile(props) {
         setProfile(response.data);
       } catch (error) {
         setError(error.toString());
-      } finally {
-        setLoading(false);
       }
     })();
   }, []);
@@ -58,7 +50,7 @@ function EditProfile(props) {
     try {
       const response = await http.put(url + "/media", data);
       console.log("Update profile response", response.data);
-      navigate(`/personalprofile/${auth.name}`);
+      window.location.reload();
     } catch (error) {
       console.log("error", error);
       setUpdateProfileError(error.toString());
@@ -66,13 +58,6 @@ function EditProfile(props) {
       setSubmitting(false);
     }
   }
-
-  useEffect(() => {
-    if (isSubmitSuccessful) {
-      setSubmit(true);
-      reset();
-    }
-  }, [isSubmitSuccessful, reset]);
 
   return (
     <Modal
@@ -88,7 +73,9 @@ function EditProfile(props) {
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          {updateProfileError && <div>Error: Failed to update profile</div>}
+          {updateProfileError && (
+            <Alert variant="danger">Error: Failed to update profile</Alert>
+          )}
           <fieldset disabled={submitting}>
             <Form.Group>
               <Form.Label>Avatar</Form.Label>
@@ -96,7 +83,9 @@ function EditProfile(props) {
                 defaultValue={profile.avatar}
                 {...register("avatar")}
               />
-              {errors.media && <span>{errors.media.message}</span>}
+              {errors.media && (
+                <Alert variant="warning">{errors.media.message}</Alert>
+              )}
             </Form.Group>
 
             <Form.Group>
@@ -105,7 +94,9 @@ function EditProfile(props) {
                 defaultValue={profile.banner}
                 {...register("banner")}
               />
-              {errors.media && <span>{errors.media.message}</span>}
+              {errors.media && (
+                <Alert variant="warning">{errors.media.message}</Alert>
+              )}
             </Form.Group>
 
             <Form.Group className="text-center">

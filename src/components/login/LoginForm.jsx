@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { BASE_URL, LOGIN_PATH } from "../../constants/api/Api";
 import AuthContext from "../../context/AuthContext/authContext";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 
 const url = BASE_URL + LOGIN_PATH;
 
@@ -49,12 +49,18 @@ function LoginForm() {
     <Form onSubmit={handleSubmit(onSubmit)}>
       <br />
 
-      {loginError && <div>Login failed; Invalid username or password.</div>}
+      {loginError && (
+        <Alert variant="warning">
+          Login failed: Invalid username or password.
+        </Alert>
+      )}
       <fieldset disabled={submitting}>
         <Form.Group>
           <Form.Label>Email</Form.Label>
           <Form.Control {...register("email", { required: true })} />
-          {errors.email && <div>{errors.email.message}</div>}
+          {errors.email && (
+            <Alert variant="warning">{errors.email.message}</Alert>
+          )}
         </Form.Group>
         <br />
         <Form.Group>
@@ -63,7 +69,9 @@ function LoginForm() {
             {...register("password", { required: true })}
             type="password"
           />
-          {errors.password && <div>{errors.password.message}</div>}
+          {errors.password && (
+            <Alert variant="warning">{errors.password.message}</Alert>
+          )}
         </Form.Group>
         <br />
         <Form.Group className="text-center">

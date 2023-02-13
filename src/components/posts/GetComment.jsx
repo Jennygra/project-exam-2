@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { POSTS_PATH } from "../../constants/api/Api";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Alert } from "react-bootstrap";
 import checkImg from "../../context/CheckImg";
 import defaultProfileImg from "../../images/default-user-img.jpg";
 
@@ -45,7 +45,7 @@ function GetComment() {
   }
 
   if (error) {
-    return <div>ERROR: An error occured</div>;
+    return <Alert variant="secondary">ERROR: An error occured</Alert>;
   }
 
   if (comment.comments.length === 0) {

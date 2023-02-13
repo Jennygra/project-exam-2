@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 import { PROFILE_PATH } from "../../constants/api/Api";
-import { Spinner, Figure } from "react-bootstrap";
+import { Spinner, Figure, Alert } from "react-bootstrap";
 import checkImg from "../../context/CheckImg";
 import img from "../../images/default-user-img.jpg";
 
@@ -35,7 +35,7 @@ function DisplayProfilesList() {
   }
 
   if (error) {
-    return <div>ERROR: An error occured</div>;
+    return <Alert variant="danger">ERROR: An error occured</Alert>;
   }
 
   return (

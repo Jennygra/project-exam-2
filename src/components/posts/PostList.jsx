@@ -1,4 +1,5 @@
 import DisplayPost from "./DisplayPosts";
+import { Alert } from "react-bootstrap";
 
 function PostList({ searchResults }) {
   const results = searchResults.map((post) => (
@@ -9,7 +10,7 @@ function PostList({ searchResults }) {
     results
   ) : (
     <div>
-      <p>No matching posts</p>
+      <Alert variant="dark">No matching post</Alert>
     </div>
   );
 

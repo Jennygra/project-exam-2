@@ -1,5 +1,4 @@
 import checkImg from "../../context/CheckImg";
-import ReactPost from "./ReactPost";
 import img from "../../images/no-img.jpg";
 
 const DisplayPost = ({ post }) => {

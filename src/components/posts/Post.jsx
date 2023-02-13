@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import AuthContext from "../../context/AuthContext/authContext";
 import { POSTS_PATH } from "../../constants/api/Api";
-import { Spinner, Button } from "react-bootstrap";
+import { Spinner, Button, Alert } from "react-bootstrap";
 import GetComment from "./GetComment";
 import AddComment from "./AddComment";
 import EditPost from "./EditPost";
@@ -37,6 +37,7 @@ function Post() {
       try {
         const response = await http.get(url);
         setPost(response.data);
+        console.log(response.data);
       } catch (error) {
         setError(error.toString());
       } finally {
@@ -55,7 +56,7 @@ function Post() {
   }
 
   if (error) {
-    return <div>ERROR: An error occured</div>;
+    return <Alert variant="danger">ERROR: An error occured</Alert>;
   }
 
   if (auth.name === post.author.name) {

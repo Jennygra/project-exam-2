@@ -3,7 +3,7 @@ import useAxios from "../../hooks/useAxios";
 import { useParams, useNavigate } from "react-router-dom";
 import { PROFILE_PATH } from "../../constants/api/Api";
 import checkImg from "../../context/CheckImg";
-import { Spinner, Button } from "react-bootstrap";
+import { Spinner, Button, Alert } from "react-bootstrap";
 import ProfilePosts from "../profiles/ProfilePosts";
 import EditProfile from "./EditProfile";
 import MakePost from "./MakePost";
@@ -50,7 +50,9 @@ function PersonalProfile() {
   }
 
   if (error) {
-    return <div>ERROR: An error occured</div>;
+    return (
+      <Alert variant="danger">ERROR: An error occured, please try again</Alert>
+    );
   }
 
   return (

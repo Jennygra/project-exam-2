@@ -30,7 +30,6 @@ function Home() {
 
         <div className="homepage-posts_wrapper">
           <div className="homepage-posts_item">
-            {" "}
             <DisplayPostList />
           </div>
         </div>

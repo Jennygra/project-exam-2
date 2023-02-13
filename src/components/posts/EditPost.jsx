@@ -1,14 +1,13 @@
-import { useState, useEffect, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../hooks/useAxios";
-import AuthContext from "../../context/AuthContext/authContext";
 import { BASE_URL, POSTS_PATH } from "../../constants/api/Api";
 import TagsInput from "./TagsInput";
 import DeletePost from "./DeletePost";
-import { Button, Form, Modal } from "react-bootstrap";
+import { Alert, Button, Form, Modal } from "react-bootstrap";
 
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
@@ -21,13 +20,11 @@ function EditPost(props) {
   const [submitting, setSubmitting] = useState(false);
   const [updatePostError, setUpdatePostError] = useState(null);
   const [submitSuccessful, setSubmit] = useState(false);
-  const [auth, setAuth] = useContext(AuthContext);
   const [tags, setTags] = useState([]);
 
   const { id } = useParams();
   const url = BASE_URL + POSTS_PATH + "/" + id;
   const http = useAxios();
-  const navigate = useNavigate();
 
   const {
     register,
@@ -74,8 +71,6 @@ function EditPost(props) {
     }
   }, [isSubmitSuccessful, reset]);
 
-  console.log(tags);
-
   return (
     <Modal
       {...props}
@@ -90,7 +85,9 @@ function EditPost(props) {
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          {updatePostError && <div>Error: Failed to make a post</div>}
+          {updatePostError && (
+            <Alert variant="danger">Error: Failed to make a post</Alert>
+          )}
           <fieldset disabled={submitting}>
             <Form.Group>
               <Form.Label>Title</Form.Label>
@@ -98,13 +95,17 @@ function EditPost(props) {
                 defaultValue={post.title}
                 {...register("title", { required: true })}
               />
-              {errors.title && <span>{errors.title.message}</span>}
+              {errors.title && (
+                <Alert variant="warning">{errors.title.message}</Alert>
+              )}
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Media</Form.Label>
               <Form.Control defaultValue={post.media} {...register("media")} />
-              {errors.media && <span>{errors.media.message}</span>}
+              {errors.media && (
+                <Alert variant="warning">{errors.media.message}</Alert>
+              )}
             </Form.Group>
 
             <Form.Group>
@@ -115,7 +116,9 @@ function EditPost(props) {
                 defaultValue={post.body}
                 {...register("body")}
               />
-              {errors.body && <span>{errors.body.message}</span>}
+              {errors.body && (
+                <Alert variant="warning">{errors.body.message}</Alert>
+              )}
             </Form.Group>
 
             <Form.Group>
@@ -126,7 +129,9 @@ function EditPost(props) {
                 defaultValue={post.tags}
                 {...register("tags")}
               />
-              {errors.tags && <span>{errors.tags.message}</span>}
+              {errors.tags && (
+                <Alert variant="warning">{errors.tags.message}</Alert>
+              )}
             </Form.Group>
 
             <Form.Group className="text-center edit-post__btns">

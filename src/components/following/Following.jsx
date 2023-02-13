@@ -50,7 +50,7 @@ function Following() {
     return (
       <Alert variant="info" className="alert_msg">
         You are not following anyone! Go to{" "}
-        <Alert.Link href="/profiles">profiles</Alert.Link> for find some one to
+        <Alert.Link href="/profiles">profiles</Alert.Link> to find someone to
         follow.
       </Alert>
     );

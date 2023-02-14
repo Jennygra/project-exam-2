@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import AuthContext from "../../context/AuthContext/authContext";
 import useAxios from "../../hooks/useAxios";
 import { PROFILE_PATH } from "../../constants/api/Api";
-import { Alert, Spinner, Figure } from "react-bootstrap";
-import checkImg from "../../context/CheckImg";
-import img from "../../images/default-user-img.jpg";
+import { Alert, Spinner } from "react-bootstrap";
+import DisplayUsers from "../profiles/DisplayUsers";
 
 function Followers() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -12,9 +12,10 @@ function Followers() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const { name } = useParams();
   const http = useAxios();
-  const url =
-    PROFILE_PATH + "/" + auth.name + "?_following=true&_followers=true";
+
+  const url = PROFILE_PATH + "/" + name + "?_following=true&_followers=true";
 
   useEffect(() => {
     (async function fetchData() {
@@ -47,13 +48,21 @@ function Followers() {
   }
 
   if (profile.followers.length === 0) {
-    return (
-      <Alert variant="info" className="alert_msg">
-        You have no followers! Make a{" "}
-        <Alert.Link href={"/personalprofile/" + auth.name}>post</Alert.Link> to
-        attract other users to follow you.
-      </Alert>
-    );
+    if (auth.name === name) {
+      return (
+        <Alert variant="info" className="alert_msg">
+          No have no followers! Make a{" "}
+          <Alert.Link href={"/personalprofile/" + auth.name}>post</Alert.Link>{" "}
+          to attract other users to follow you.
+        </Alert>
+      );
+    } else {
+      return (
+        <Alert variant="secondary" className="alert_msg">
+          No followers!
+        </Alert>
+      );
+    }
   }
 
   return (
@@ -64,25 +73,7 @@ function Followers() {
 
       <div className="profiles-page-container">
         {profile.followers.map((profiles) => (
-          <Figure key={profiles.name} className="followers__container">
-            <div className="profile-img_wrapper">
-              <a href={`/profile/${profiles.name}`}>
-                <Figure.Image
-                  width={100}
-                  height={100}
-                  alt={profiles.name}
-                  src={checkImg(profiles.avatar, img)}
-                />
-              </a>
-            </div>
-
-            <div className="profile-details_wrapper">
-              <div className="profile-details_info">
-                <h5>{profiles.name}</h5>
-              </div>
-              <hr />
-            </div>
-          </Figure>
+          <DisplayUsers key={profiles.id} profiles={profiles} />
         ))}
       </div>
     </>

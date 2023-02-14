@@ -9,7 +9,6 @@ import EditProfile from "./EditProfile";
 import MakePost from "./MakePost";
 import defaultProfileImg from "../../images/default-user-img.jpg";
 import defaultBannerImg from "../../images/no-img.jpg";
-import Followers from "../followers/Followers";
 
 function PersonalProfile() {
   const [profile, setProfile] = useState([]);
@@ -99,8 +98,12 @@ function PersonalProfile() {
 
           <div className="profile-counts_item">
             <p>{profile._count.posts} posts</p>
-            <a href="/followers">{profile._count.followers} followers</a>
-            <a href="/following">{profile._count.following} following</a>
+            <a href={`/followers/${profile.name}`}>
+              {profile._count.followers} followers
+            </a>
+            <a href={`/following/${profile.name}`}>
+              {profile._count.following} following
+            </a>
           </div>
           <hr />
         </div>

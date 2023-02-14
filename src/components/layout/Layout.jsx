@@ -36,8 +36,8 @@ function Layout() {
               exact
               element={<PersonalProfile />}
             />
-            <Route path="/followers" element={<Followers />} />
-            <Route path="/following" element={<Following />} />
+            <Route path="/followers/:name" exact element={<Followers />} />
+            <Route path="/following/:name" exact element={<Following />} />
           </Routes>
         </Container>
 

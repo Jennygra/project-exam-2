@@ -85,8 +85,12 @@ function Profile() {
 
           <div className="profile-counts_item">
             <p>{profile._count.posts} posts</p>
-            <p>{profile._count.followers} followers</p>
-            <p>{profile._count.following} following</p>
+            <a href={`/followers/${profile.name}`}>
+              {profile._count.followers} followers
+            </a>
+            <a href={`/following/${profile.name}`}>
+              {profile._count.following} following
+            </a>
           </div>
           <hr />
         </div>

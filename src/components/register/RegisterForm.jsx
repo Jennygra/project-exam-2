@@ -69,12 +69,15 @@ function RegisterForm() {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       {resgisterError && (
-        <Alert variant="warning">Register failed: profile already exist.</Alert>
+        <Alert variant="warning">
+          Register failed: profile already exist or try another username or
+          email{" "}
+        </Alert>
       )}
       {submitSuccessful && (
         <Alert variant="success">
-          Profile was made, please go to{" "}
-          <Alert.Link href="/login">login page to login</Alert.Link>
+          Success! Please go to{" "}
+          <Alert.Link href="/login">login page</Alert.Link> to login
         </Alert>
       )}
       <fieldset disabled={submitting}>

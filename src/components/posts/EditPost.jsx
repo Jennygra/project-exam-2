@@ -101,7 +101,7 @@ function EditPost(props) {
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Media</Form.Label>
+              <Form.Label>Image link</Form.Label>
               <Form.Control defaultValue={post.media} {...register("media")} />
               {errors.media && (
                 <Alert variant="warning">{errors.media.message}</Alert>

@@ -37,7 +37,6 @@ function Post() {
       try {
         const response = await http.get(url);
         setPost(response.data);
-        console.log(response.data);
       } catch (error) {
         setError(error.toString());
       } finally {
@@ -143,10 +142,16 @@ function Post() {
 
             <div className="post-container_icons-wrapper">
               <ReactPost reactionCount={post.reactions} />
-              <i
-                className="fa-regular fa-share-from-square"
-                aria-label="Share"
-              />
+              <a
+                href={`mailto:?subject=Check%20out%20AdD.%20-%20Share,%20connect,%20discover!&body= Check out AdD. Join to share, connect and discover -> ${window.location.href}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i
+                  className="fa-regular fa-share-from-square share__btn"
+                  aria-label="Share"
+                />
+              </a>
             </div>
           </div>
         </div>

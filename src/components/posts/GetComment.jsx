@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { POSTS_PATH } from "../../constants/api/Api";
@@ -27,6 +27,7 @@ function GetComment() {
       try {
         const response = await http.get(url);
         setComment(response.data);
+        console.log(response.data);
       } catch (error) {
         setError(error.toString());
       } finally {

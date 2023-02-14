@@ -4,12 +4,14 @@
 }
 
 .homepage-profiles_container,
-.homepage-posts_container {
+.homepage-posts_container,
+.homepage-followed_users_posts__container {
   margin: 3rem auto;
 }
 
 .homepage-profiles_title,
-.homepage-posts_title {
+.homepage-posts_title,
+.homepage-followed_users_posts__title {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -75,4 +77,12 @@
   display: flex;
   pad: 1rem;
   gap: 3rem;
+}
+
+.homepage-followed_users_posts__item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 2rem;
+  margin-top: $container-top-margin;
 }

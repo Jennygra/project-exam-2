@@ -4,18 +4,20 @@ import { POSTS_PATH } from "../../constants/api/Api";
 import DisplayPost from "./DisplayPosts";
 import { Spinner, Alert } from "react-bootstrap";
 
-function DisplayPostList() {
+function FollowedProfilePosts() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const http = useAxios();
+  const url = POSTS_PATH + "/following";
 
   useEffect(() => {
     (async function fetchData() {
       try {
-        const response = await http.get(POSTS_PATH);
+        const response = await http.get(url);
         setPosts(response.data);
+        console.log(response.data);
       } catch (error) {
         setError(error.toString());
       } finally {
@@ -50,4 +52,4 @@ function DisplayPostList() {
   );
 }
 
-export default DisplayPostList;
+export default FollowedProfilePosts;

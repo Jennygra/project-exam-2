@@ -72,7 +72,7 @@ function MakePost(props) {
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Media</Form.Label>
+              <Form.Label>Image link</Form.Label>
               <Form.Control {...register("media")} />
               {errors.media && (
                 <Alert variant="warning">{errors.media.message}</Alert>

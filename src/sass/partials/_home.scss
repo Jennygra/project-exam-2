@@ -21,6 +21,17 @@
 
   a {
     font-size: small;
+    text-decoration: underline;
+  }
+
+  h2 {
+    font-weight: bold;
+  }
+}
+
+.homepage-profiles_title {
+  h2 {
+    -webkit-text-stroke: 1px $colour-ui-primary;
   }
 }
 
@@ -73,6 +84,13 @@
   }
 }
 
+.homepage-posts_title {
+  h2 {
+    text-shadow: 2px 2px 0px $colour-shades-light, 4px 4px 0px $colour-secondary,
+      6px 6px 0px $colour-ui-primary;
+  }
+}
+
 .homepage-posts_item {
   display: flex;
   pad: 1rem;
@@ -85,4 +103,12 @@
   justify-content: space-evenly;
   gap: 2rem;
   margin-top: $container-top-margin;
+}
+
+.homepage-followed_users_posts__title {
+  h2 {
+    color: white;
+    text-shadow: -1px 1px 0 $colour-ui-primary, 1px 1px 0 $colour-primary,
+      1px -1px 0 $colour-shades-dark, -1px -1px 0 $colour-shades-light;
+  }
 }

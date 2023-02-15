@@ -23,7 +23,7 @@ function SearchBar({ posts, setSearchResults }) {
       <form className="search__form" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Search post by id..."
+          placeholder="Search..."
           className="search__input"
           onChange={handleSearchChange}
         />

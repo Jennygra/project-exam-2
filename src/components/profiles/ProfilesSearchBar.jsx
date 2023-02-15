@@ -20,7 +20,7 @@ function ProfilesSearchBar({ profiles, setSearchResults }) {
       <form className="search__form" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Search profile by name..."
+          placeholder="Search..."
           className="search__input"
           onChange={handleSearchChange}
         />

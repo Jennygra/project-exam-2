@@ -67,7 +67,7 @@ function Post() {
       <>
         <div className="post__author-container">
           <div className="post__author-img">
-            <a href={`/profile/${post.author.name}`}>
+            <a href={`/personalprofile/${auth.name}`}>
               <img
                 src={checkImg(post.author.avatar, defaultProfileImg)}
                 alt={post.author.name + "profile image"}
@@ -76,7 +76,9 @@ function Post() {
           </div>
 
           <div>
-            <h4>{post.author.name}</h4>
+            <a href={`/personalprofile/${auth.name}`}>
+              <h4>{post.author.name}</h4>
+            </a>
             <p>{FormatDate(post.created)}</p>
           </div>
         </div>
@@ -171,7 +173,9 @@ function Post() {
           </div>
 
           <div>
-            <h4>{post.author.name}</h4>
+            <a href={`/profile/${post.author.name}`}>
+              <h4>{post.author.name}</h4>
+            </a>
             <p>{FormatDate(post.created)}</p>
           </div>
         </div>

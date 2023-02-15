@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext/authContext";
-import bannerImg from "../../images/homepage-banner.JPG";
 import Card from "react-bootstrap/Card";
 
 function Banner() {
@@ -11,15 +10,15 @@ function Banner() {
   let greeting = "";
 
   if (3 <= currentTime && currentTime < 11) {
-    imgUrl = "https://www.linkpicture.com/q/WechatIMG777.jpeg";
+    imgUrl = "https://www.linkpicture.com/q/WechatIMG777_1.jpeg";
 
     greeting = "Good morning,";
   } else if (12 <= currentTime && currentTime < 18) {
-    imgUrl = "https://www.linkpicture.com/q/WechatIMG778.jpeg";
+    imgUrl = "https://www.linkpicture.com/q/WechatIMG778_1.jpeg";
 
     greeting = "Good afternoon,";
   } else {
-    imgUrl = "https://www.linkpicture.com/q/WechatIMG775.jpeg";
+    imgUrl = "https://www.linkpicture.com/q/WechatIMG775_1.jpeg";
 
     greeting = "Good evening,";
   }

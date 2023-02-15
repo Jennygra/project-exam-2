@@ -23,7 +23,7 @@ function Home() {
 
       <div className="homepage-posts_container">
         <div className="homepage-posts_title">
-          <h2>New posts!</h2>
+          <h2>New post!</h2>
           <p>
             <a href="/posts">See more</a>
           </p>

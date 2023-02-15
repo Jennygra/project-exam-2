@@ -45,13 +45,12 @@ function FollowedProfilePosts() {
   }
 
   if (posts.length === 0) {
-    return <div>Follow someone to see their posts</div>;
+    return <Alert variant="light">Follow someone to see their posts</Alert>;
   }
 
   return (
     <>
       {posts.map((post) => (
-        // <DisplayPost key={post.id} post={post} />
         <div className="homepage-followed_users_posts__item" key={post.id}>
           <a href={`post/${post.id}`}>
             <img src={checkImg(post.media, img)} alt={post.title} />

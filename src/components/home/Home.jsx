@@ -37,7 +37,7 @@ function Home() {
 
         <div className="homepage-followed_users_posts__container">
           <div className="homepage-followed_users_posts__title">
-            <h2>See what your friends posted👇</h2>
+            <h2>See what your friends posted</h2>
           </div>
 
           <div className="homepage-followed_users_posts__wrapper">

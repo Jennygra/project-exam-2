@@ -33,6 +33,7 @@ const schema = yup.object().shape({
 function RegisterForm() {
   const [submitting, setSubmitting] = useState(false);
   const [resgisterError, setResgisterError] = useState(null);
+  const [passwordShown, setPasswordShown] = useState(false);
   const [submitSuccessful, setSubmit] = useState(false);
 
   const {
@@ -66,6 +67,10 @@ function RegisterForm() {
     }
   }, [isSubmitSuccessful, reset]);
 
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       {resgisterError && (
@@ -98,8 +103,18 @@ function RegisterForm() {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Password</Form.Label>
-          <Form.Control {...register("password", { required: true })} />
+          <div className="password-wrapper">
+            <Form.Label>Password</Form.Label>
+            <i
+              class="fa-regular fa-eye"
+              onClick={togglePassword}
+              aria-Label="Show password"
+            />
+          </div>
+          <Form.Control
+            type={passwordShown ? "text" : "password"}
+            {...register("password", { required: true })}
+          />
           {errors.password && (
             <Alert variant="warning">{errors.password.message}</Alert>
           )}

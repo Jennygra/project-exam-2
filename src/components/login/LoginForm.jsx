@@ -18,6 +18,7 @@ const schema = yup.object().shape({
 function LoginForm() {
   const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
+  const [passwordShown, setPasswordShown] = useState(false);
   const [auth, setAuth] = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -45,6 +46,10 @@ function LoginForm() {
     }
   }
 
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <br />
@@ -64,10 +69,17 @@ function LoginForm() {
         </Form.Group>
         <br />
         <Form.Group>
-          <Form.Label>Password</Form.Label>
+          <div className="password-wrapper">
+            <Form.Label>Password</Form.Label>
+            <i
+              class="fa-regular fa-eye"
+              onClick={togglePassword}
+              aria-Label="Show password"
+            />
+          </div>
           <Form.Control
+            type={passwordShown ? "text" : "password"}
             {...register("password", { required: true })}
-            type="password"
           />
           {errors.password && (
             <Alert variant="warning">{errors.password.message}</Alert>

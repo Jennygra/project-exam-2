@@ -37,6 +37,16 @@ form {
   }
 }
 
+.password-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  i:hover {
+    color: $colour-ui-primary;
+  }
+}
+
 /* Edit Post on Post page */
 /* Styling for Tags input on update post */
 .tags-input-container {

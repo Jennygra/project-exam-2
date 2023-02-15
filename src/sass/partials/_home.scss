@@ -1,6 +1,27 @@
 .homepage-banner_container {
   margin: 2rem auto;
   border: none;
+  position: relative;
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  h1 {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    color: $colour-secondary;
+
+    @media (max-width: 800px) {
+      font-size: medium;
+    }
+  }
 }
 
 .homepage-profiles_container,

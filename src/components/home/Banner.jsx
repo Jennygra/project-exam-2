@@ -25,14 +25,14 @@ function Banner() {
 
   return (
     <>
-      <Card className="bg-dark text-white homepage-banner_container">
-        <Card.Img src={imgUrl} alt="" />
-        <Card.ImgOverlay>
-          <Card.Title>
+      <div className="homepage-banner_container">
+        <img src={imgUrl} alt="Banner image" />
+        <div>
+          <h1>
             {greeting} {auth.name}!
-          </Card.Title>
-        </Card.ImgOverlay>
-      </Card>
+          </h1>
+        </div>
+      </div>
     </>
   );
 }

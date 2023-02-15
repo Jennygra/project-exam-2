@@ -3,6 +3,8 @@ import useAxios from "../../hooks/useAxios";
 import { POSTS_PATH } from "../../constants/api/Api";
 import DisplayPost from "./DisplayPosts";
 import { Spinner, Alert } from "react-bootstrap";
+import checkImg from "../../context/CheckImg";
+import img from "../../images/no-img.jpg";
 
 function FollowedProfilePosts() {
   const [posts, setPosts] = useState([]);
@@ -49,7 +51,12 @@ function FollowedProfilePosts() {
   return (
     <>
       {posts.map((post) => (
-        <DisplayPost key={post.id} post={post} />
+        // <DisplayPost key={post.id} post={post} />
+        <div className="homepage-followed_users_posts__item" key={post.id}>
+          <a href={`post/${post.id}`}>
+            <img src={checkImg(post.media, img)} alt={post.title} />
+          </a>
+        </div>
       ))}
     </>
   );

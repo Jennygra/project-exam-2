@@ -47,7 +47,7 @@ function Profiles() {
   return (
     <>
       <div className="profiles-heading_container">
-        <h1>Profiles</h1>
+        <h1>🔗 Connect with others</h1>
 
         <div className="profiles-heading_input">
           <ProfilesSearchBar

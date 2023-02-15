@@ -97,18 +97,40 @@
   gap: 3rem;
 }
 
-.homepage-followed_users_posts__item {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 2rem;
-  margin-top: $container-top-margin;
-}
-
 .homepage-followed_users_posts__title {
   h2 {
     color: white;
     text-shadow: -1px 1px 0 $colour-ui-primary, 1px 1px 0 $colour-primary,
       1px -1px 0 $colour-shades-dark, -1px -1px 0 $colour-shades-light;
+  }
+}
+
+.homepage-followed_users_posts__wrapper {
+  column-count: 5;
+  column-gap: 5px;
+  margin-top: 5px;
+
+  @media (max-width: 1200px) {
+    column-count: 4;
+  }
+
+  @media (max-width: 1000px) {
+    column-count: 3;
+  }
+
+  @media (max-width: 800px) {
+    column-count: 2;
+  }
+
+  @media (max-width: 400px) {
+    column-count: 1;
+  }
+}
+
+.homepage-followed_users_posts__item {
+  img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 5px;
   }
 }

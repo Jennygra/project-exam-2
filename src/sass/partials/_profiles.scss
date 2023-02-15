@@ -93,6 +93,11 @@
     border: 1px solid $colour-primary !important;
   }
 
+  h1 {
+    font-weight: bold;
+    -webkit-text-stroke: 1px $colour-ui-primary;
+  }
+
   @media screen and (max-width: 600px) {
     .profiles-heading_input,
     input {

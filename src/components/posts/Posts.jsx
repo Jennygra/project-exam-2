@@ -48,7 +48,7 @@ function Posts() {
   return (
     <>
       <div className="posts-heading_wrapper">
-        <h1>Post</h1>
+        <h1>New post!</h1>
 
         <div>
           <SearchBar posts={posts} setSearchResults={setSearchResults} />

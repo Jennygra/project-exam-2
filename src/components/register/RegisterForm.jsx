@@ -32,7 +32,7 @@ const schema = yup.object().shape({
 
 function RegisterForm() {
   const [submitting, setSubmitting] = useState(false);
-  const [resgisterError, setResgisterError] = useState(null);
+  const [registerError, setRegisterError] = useState(null);
   const [passwordShown, setPasswordShown] = useState(false);
   const [submitSuccessful, setSubmit] = useState(false);
 
@@ -47,25 +47,25 @@ function RegisterForm() {
 
   async function onSubmit(data) {
     setSubmitting(true);
-    setResgisterError(null);
+    setRegisterError(null);
 
     try {
       const response = await axios.post(url, data);
       console.log("response", response.data);
     } catch (error) {
       console.log("error", error);
-      setResgisterError(error.toString());
+      setRegisterError(error.toString());
     } finally {
       setSubmitting(false);
     }
   }
 
   useEffect(() => {
-    if (isSubmitSuccessful) {
+    if (isSubmitSuccessful && registerError === null) {
       setSubmit(true);
       reset();
     }
-  }, [isSubmitSuccessful, reset]);
+  }, [isSubmitSuccessful, registerError, reset]);
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
@@ -73,7 +73,7 @@ function RegisterForm() {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      {resgisterError && (
+      {registerError && (
         <Alert variant="warning">
           Register failed: profile already exist or try another username or
           email{" "}

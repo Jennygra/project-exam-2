@@ -9,7 +9,10 @@ function SearchBar({ posts, setSearchResults }) {
     }
 
     const resultArray = posts.filter((post) => {
-      return post.id.toString().includes(inputValue);
+      return (
+        post.id.toString().includes(inputValue) ||
+        post.title.includes(inputValue)
+      );
     });
 
     setSearchResults(resultArray);

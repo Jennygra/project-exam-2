@@ -17,7 +17,6 @@ function FollowedProfilePosts() {
       try {
         const response = await http.get(url);
         setPosts(response.data);
-        console.log(response.data);
       } catch (error) {
         setError(error.toString());
       } finally {
@@ -41,6 +40,10 @@ function FollowedProfilePosts() {
         ERROR: An error occured
       </Alert>
     );
+  }
+
+  if (posts.length === 0) {
+    return <div>Follow someone to see their posts</div>;
   }
 
   return (

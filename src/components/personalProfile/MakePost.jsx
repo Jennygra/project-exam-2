@@ -22,6 +22,8 @@ function MakePost(props) {
   const url = BASE_URL + POSTS_PATH;
   const http = useAxios();
 
+  console.log("tags", tags);
+
   const {
     register,
     handleSubmit,

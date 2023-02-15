@@ -11,10 +11,10 @@ const url = BASE_URL + REGISTER_PATH;
 const schema = yup.object().shape({
   name: yup
     .string()
-    .required("Your name is required")
+    .required("Username is required")
     .matches(
       /^[a-zA-Z0-9_]+$/,
-      "The name must not contain punctuation symbols apart from underscore (_)."
+      "Username must not contain punctuation symbols apart from underscore (_)."
     ),
   email: yup
     .string()
@@ -82,7 +82,7 @@ function RegisterForm() {
       )}
       <fieldset disabled={submitting}>
         <Form.Group>
-          <Form.Label>Name</Form.Label>
+          <Form.Label>Username</Form.Label>
           <Form.Control {...register("name", { required: true })} />
           {errors.name && (
             <Alert variant="warning">{errors.name.message}</Alert>

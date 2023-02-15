@@ -1,6 +1,6 @@
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
-import { NavLink, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { NavLink, useNavigate, Link } from "react-router-dom";
+import { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext/authContext";
 import checkImg from "../../context/CheckImg";
 import logo from "../../images/logo.png";
@@ -8,6 +8,7 @@ import profileImgDefault from "../../images/default-user-img.jpg";
 
 function Navigation() {
   const [auth, setAuth] = useContext(AuthContext);
+  const [expanded, setExpanded] = useState(false);
   const navigate = useNavigate();
 
   function logout() {
@@ -23,7 +24,7 @@ function Navigation() {
   }
 
   return (
-    <Navbar className="nav-bar" variant="dark" expand="md">
+    <Navbar className="nav-bar" variant="dark" expand="md" expanded={expanded}>
       <Container>
         {auth ? (
           <>
@@ -43,15 +44,26 @@ function Navigation() {
           </>
         )}
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          onClick={() => setExpanded(expanded ? false : "expanded")}
+        />
         <Navbar.Collapse id="basic-navbar-nav" className="navbar-toggle-menu">
           <Nav className="ms-auto justify-content-end">
             {auth ? (
               <>
-                <NavLink to="/posts" className="nav-link">
+                <NavLink
+                  to="/posts"
+                  className="nav-link"
+                  onClick={() => setExpanded(false)}
+                >
                   Posts
                 </NavLink>
-                <NavLink to="/profiles" className="nav-link">
+                <NavLink
+                  to="/profiles"
+                  className="nav-link"
+                  onClick={() => setExpanded(false)}
+                >
                   Profiles
                 </NavLink>
                 <NavDropdown
@@ -79,10 +91,18 @@ function Navigation() {
               </>
             ) : (
               <>
-                <NavLink to="/login" className="nav-link">
+                <NavLink
+                  to="/login"
+                  className="nav-link"
+                  onClick={() => setExpanded(false)}
+                >
                   Login
                 </NavLink>
-                <NavLink to="/register" className="nav-link">
+                <NavLink
+                  to="/register"
+                  className="nav-link"
+                  onClick={() => setExpanded(false)}
+                >
                   Register
                 </NavLink>
               </>

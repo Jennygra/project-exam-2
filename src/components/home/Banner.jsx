@@ -9,7 +9,7 @@ function Banner() {
   let imgUrl = "";
   let greeting = "";
 
-  if (3 <= currentTime && currentTime < 11) {
+  if (3 <= currentTime && currentTime < 12) {
     imgUrl = "https://www.linkpicture.com/q/WechatIMG777_1.jpeg";
 
     greeting = "Good morning,";

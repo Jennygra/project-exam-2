@@ -1,8 +1,8 @@
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { NavLink, useNavigate, Link } from "react-router-dom";
 import { useContext, useState } from "react";
-import AuthContext from "../../context/AuthContext/authContext";
-import checkImg from "../../context/CheckImg";
+import AuthContext from "../../context/authContext";
+import checkImg from "../../utilities/CheckImg";
 import logo from "../../images/logo.png";
 import profileImgDefault from "../../images/default-user-img.jpg";
 

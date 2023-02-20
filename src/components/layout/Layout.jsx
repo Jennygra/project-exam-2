@@ -1,19 +1,19 @@
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Landingsite from "../landingsite/Landingsite";
-import Login from "../login/Login";
-import Register from "../register/Register";
-import Home from "../home/Home";
-import Posts from "../posts/Posts";
-import Post from "../posts/Post";
-import Profiles from "../profiles/Profiles";
-import Profile from "../profiles/Profile";
-import PersonalProfile from "../personalProfile/PersonalProfile";
-import Followers from "../followers/Followers";
-import Following from "../following/Following";
+import Landingsite from "../../pages/landingsite/Landingsite";
+import Login from "../../pages/login/Login";
+import Register from "../../pages/register/Register";
+import Home from "../../pages/home/Home";
+import Posts from "../../pages/posts/Posts";
+import Post from "../../pages/posts/Post";
+import Profiles from "../../pages/profiles/Profiles";
+import Profile from "../../pages/profiles/Profile";
+import PersonalProfile from "../../pages/personalProfile/PersonalProfile";
+import Followers from "../../pages/followers/Followers";
+import Following from "../../pages/following/Following";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
-import { AuthProvider } from "../../context/AuthContext/authContext";
+import { AuthProvider } from "../../context/authContext";
 
 function Layout() {
   return (

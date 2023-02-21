@@ -21,7 +21,6 @@ function DeletePost() {
     if (confirmDelete) {
       try {
         const response = await http.delete(url);
-        console.log("Delete post response", response);
         navigate(`/personalprofile/${auth.name}`);
       } catch (error) {
         console.log("error", error);

@@ -50,7 +50,6 @@ function EditProfile(props) {
 
     try {
       const response = await http.put(url + "/media", data);
-      console.log("Update profile response", response.data);
       window.location.reload();
     } catch (error) {
       console.log("error", error);

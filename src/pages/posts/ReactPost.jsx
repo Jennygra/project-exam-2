@@ -20,7 +20,6 @@ function ReactPost(props) {
       const convertedCounts = parseInt(counts);
 
       sumCounts += convertedCounts;
-      console.log(sumCounts);
 
       setCounts(sumCounts);
     });
@@ -33,7 +32,6 @@ function ReactPost(props) {
 
     try {
       const response = await http.put(url);
-      console.log("Emoji response", response);
       window.location.reload();
     } catch (error) {
       console.log(error);

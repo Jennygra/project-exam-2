@@ -5,8 +5,9 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../context/useAxios";
 import { BASE_URL, PROFILE_PATH } from "../../data/Api";
-import { Button, Form, Alert } from "react-bootstrap";
-import Modal from "react-bootstrap/Modal";
+import { Button, Form, Alert, Modal } from "react-bootstrap";
+
+// This function let the user to edit banner and profile image
 
 const schema = yup.object().shape({
   avatar: yup.string().url(),

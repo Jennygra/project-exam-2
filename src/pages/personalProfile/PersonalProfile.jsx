@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 import useAxios from "../../context/useAxios";
 import { useParams, useNavigate } from "react-router-dom";
 import { PROFILE_PATH } from "../../data/Api";
+import ProfilePosts from "../profiles/ProfilePosts";
+import { EditProfile, MakePost } from "./index";
 import checkImg from "../../utilities/CheckImg";
 import { Button } from "react-bootstrap";
 import { DisplaySpinner, DisplayError } from "../../components/index";
-import ProfilePosts from "../profiles/ProfilePosts";
-import EditProfile from "./EditProfile";
-import MakePost from "./MakePost";
 import defaultProfileImg from "../../images/default-user-img.jpg";
 import defaultBannerImg from "../../images/no-img.jpg";
 
@@ -33,7 +32,6 @@ function PersonalProfile() {
       try {
         const response = await http.get(url);
         setProfile(response.data);
-        console.log(response.data);
       } catch (error) {
         setError(error.toString());
       } finally {

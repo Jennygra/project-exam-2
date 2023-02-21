@@ -7,6 +7,8 @@ import { BASE_URL, POSTS_PATH } from "../../data/Api";
 import { Button, Form, Modal, Alert } from "react-bootstrap";
 import TagsInput from "../posts/TagsInput";
 
+// This function let the user to add a post
+
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
   media: yup.string().url(),

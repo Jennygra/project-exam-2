@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import useAxios from "../../context/useAxios";
 import { POSTS_PATH } from "../../data/Api";
-import DisplayPost from "./DisplayPosts";
-import { DisplaySpinner, DisplayError } from "../../components/index";
+import {
+  DisplaySpinner,
+  DisplayError,
+  DisplayPosts,
+} from "../../components/index";
 
 function DisplayPostList() {
   const [posts, setPosts] = useState([]);
@@ -35,7 +38,7 @@ function DisplayPostList() {
   return (
     <>
       {posts.map((post) => (
-        <DisplayPost key={post.id} post={post} />
+        <DisplayPosts key={post.id} post={post} />
       ))}
     </>
   );

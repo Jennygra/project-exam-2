@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../context/useAxios";
 import { POSTS_PATH } from "../../data/Api";
@@ -6,11 +6,12 @@ import { DisplaySpinner, DisplayError } from "../../components/index";
 import checkImg from "../../utilities/CheckImg";
 import defaultProfileImg from "../../images/default-user-img.jpg";
 
+// This function gets all the comment on one post
+
 function GetComment() {
   const [comment, setComment] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isAuthorAuth, setIsAuthorAuth] = useState(null);
 
   const navigate = useNavigate();
   const { id } = useParams();

@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import useAxios from "../../context/useAxios";
 import { POSTS_PATH } from "../../data/Api";
 import { DisplaySpinner, DisplayError } from "../../components/index";
-import SearchBar from "./SearchBar";
-import PostList from "./PostList";
+import { SearchBar, PostList } from "./index";
 
 function Posts() {
   const [posts, setPosts] = useState([]);

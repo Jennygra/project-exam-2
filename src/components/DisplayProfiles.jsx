@@ -2,6 +2,9 @@ import { Figure } from "react-bootstrap";
 import checkImg from "../utilities/CheckImg";
 import img from "../images/default-user-img.jpg";
 
+// This component display user profile
+// User profile details including profile picture, name, post, followers and following.
+
 const DisplayProfiles = ({ profiles }) => {
   return (
     <>

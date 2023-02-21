@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../context/useAxios";
-import { useParams } from "react-router-dom";
 import { BASE_URL, POSTS_PATH } from "../../data/Api";
-import { Button, Form, Alert } from "react-bootstrap";
-import Modal from "react-bootstrap/Modal";
+import { Button, Form, Alert, Modal } from "react-bootstrap";
+
+// This function let the user to comment on any posts
 
 const schema = yup.object().shape({
   body: yup.string().required("Please write a comment"),
@@ -37,7 +38,6 @@ function AddComment(props) {
 
     try {
       const response = await http.post(url, data);
-      console.log("Add comment response", response.data);
       window.location.reload();
     } catch (error) {
       setCommentError(error.toString());

@@ -1,7 +1,9 @@
-import checkImg from "../../utilities/CheckImg";
-import img from "../../images/no-img.jpg";
+import { checkImg } from "../utilities/index";
+import img from "../images/no-img.jpg";
 
-const DisplayPost = ({ post }) => {
+// This components display post
+
+const DisplayPosts = ({ post }) => {
   return (
     <div className="posts-item" key={post.id}>
       <a href={`post/${post.id}`}>
@@ -18,4 +20,4 @@ const DisplayPost = ({ post }) => {
   );
 };
 
-export default DisplayPost;
+export default DisplayPosts;

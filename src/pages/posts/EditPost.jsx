@@ -5,9 +5,10 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAxios from "../../context/useAxios";
 import { BASE_URL, POSTS_PATH } from "../../data/Api";
-import TagsInput from "./TagsInput";
-import DeletePost from "./DeletePost";
+import { TagsInput, DeletePost } from "./index";
 import { Alert, Button, Form, Modal } from "react-bootstrap";
+
+// This function let the auth user to edit their own post
 
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),

@@ -9,6 +9,8 @@ import { checkImg, FormatDate } from "../../utilities/index";
 import defaultPostImg from "../../images/no-img.jpg";
 import defaultProfileImg from "../../images/default-user-img.jpg";
 
+// Display all the post details, and gives the ability to comment, react, and edit and delete on their own post
+
 function Post() {
   const [post, setPost] = useState([]);
   const [loading, setLoading] = useState(true);

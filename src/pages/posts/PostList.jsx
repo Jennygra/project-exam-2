@@ -1,9 +1,9 @@
-import DisplayPost from "./DisplayPosts";
+import { DisplayPosts } from "../../components/index";
 import { Alert } from "react-bootstrap";
 
 function PostList({ searchResults }) {
   const results = searchResults.map((post) => (
-    <DisplayPost key={post.id} post={post} />
+    <DisplayPosts key={post.id} post={post} />
   ));
 
   const content = results?.length ? (

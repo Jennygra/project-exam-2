@@ -4,6 +4,8 @@ import { useAxios, AuthContext } from "../../context/index";
 import { BASE_URL, POSTS_PATH } from "../../data/Api";
 import { Button } from "react-bootstrap";
 
+// This function let the auth user to delete their own post
+
 function DeletePost() {
   const [error, setError] = useState(null);
   const [auth, setAuth] = useContext(AuthContext);

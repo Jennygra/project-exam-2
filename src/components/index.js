@@ -3,6 +3,7 @@ import DisplayUsers from "./DisplayUsers";
 import DisplayError from "./DisplayError";
 import DisplayProfiles from "./DisplayProfiles";
 import DisplaySpinner from "./DisplaySpinner";
+import DisplayPosts from "./DisplayPosts";
 
 export {
   FollowUnfollowBtn,
@@ -10,4 +11,5 @@ export {
   DisplayError,
   DisplayProfiles,
   DisplaySpinner,
+  DisplayPosts,
 };

@@ -1,3 +1,6 @@
+// Search function for posts page
+// Find post by id or title
+
 function SearchBar({ posts, setSearchResults }) {
   const handleSubmit = (e) => e.preventDefault();
 

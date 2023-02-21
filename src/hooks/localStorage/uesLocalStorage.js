@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+// This function stores the value to Local Storage
+
 function useLocalStorage(key, initValue) {
   const [storedValue, setStoredValue] = useState(() => {
     try {

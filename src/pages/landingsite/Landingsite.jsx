@@ -1,6 +1,8 @@
 import Banner from "./Banner";
 import RegisterForm from "../register/RegisterForm";
 
+// This is the landingsite(home) for non logged in users
+
 function Landingsite() {
   return (
     <>

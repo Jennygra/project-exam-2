@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import useAxios from "../../context/useAxios";
 import { PROFILE_PATH } from "../../data/Api";
-import DisplayProfiles from "../../components/DisplayProfiles";
-import { DisplaySpinner, DisplayError } from "../../components/index";
+import {
+  DisplaySpinner,
+  DisplayProfiles,
+  DisplayError,
+} from "../../components/index";
 
 function DisplayProfilesList() {
   const [profiles, setProfiles] = useState([]);

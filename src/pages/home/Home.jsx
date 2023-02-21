@@ -3,6 +3,8 @@ import DisplayPostList from "../posts/DisplayPostList";
 import DisplayProfilesList from "../profiles/DisplayProfilesList";
 import FollowedProfilePosts from "../posts/FollowedProfilePosts";
 
+// This is homepage for logged in users
+
 function Home() {
   return (
     <>

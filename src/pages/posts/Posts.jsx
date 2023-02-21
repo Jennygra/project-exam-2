@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useAxios from "../../context/useAxios";
 import { POSTS_PATH } from "../../data/Api";
-import { Spinner, Alert } from "react-bootstrap";
+import { DisplaySpinner, DisplayError } from "../../components/index";
 import SearchBar from "./SearchBar";
 import PostList from "./PostList";
 
@@ -28,21 +28,11 @@ function Posts() {
   }, []);
 
   if (loading) {
-    return (
-      <div className="spinner">
-        <Spinner animation="grow" variant="secondary" />
-        Loading...
-      </div>
-    );
+    return <DisplaySpinner />;
   }
 
   if (error) {
-    console.log(error);
-    return (
-      <Alert variant="danger" className="alert_msg">
-        ERROR: An error occured
-      </Alert>
-    );
+    return <DisplayError type="danger" content="ERROR: An error occured" />;
   }
 
   return (

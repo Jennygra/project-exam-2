@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../context/useAxios";
 import { POSTS_PATH } from "../../data/Api";
-import { Spinner, Alert } from "react-bootstrap";
+import { DisplaySpinner, DisplayError } from "../../components/index";
 import checkImg from "../../utilities/CheckImg";
 import defaultProfileImg from "../../images/default-user-img.jpg";
 
@@ -37,20 +37,11 @@ function GetComment() {
   }, []);
 
   if (loading) {
-    return (
-      <div className="spinner">
-        <Spinner animation="grow" variant="secondary" />
-        Loading...
-      </div>
-    );
+    return <DisplaySpinner />;
   }
 
   if (error) {
-    return (
-      <Alert variant="secondary" className="alert_msg">
-        ERROR: An error occured
-      </Alert>
-    );
+    return <DisplayError type="secondary" content="ERROR: An error occured" />;
   }
 
   if (comment.comments.length === 0) {

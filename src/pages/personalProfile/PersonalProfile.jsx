@@ -3,7 +3,8 @@ import useAxios from "../../context/useAxios";
 import { useParams, useNavigate } from "react-router-dom";
 import { PROFILE_PATH } from "../../data/Api";
 import checkImg from "../../utilities/CheckImg";
-import { Spinner, Button, Alert } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { DisplaySpinner, DisplayError } from "../../components/index";
 import ProfilePosts from "../profiles/ProfilePosts";
 import EditProfile from "./EditProfile";
 import MakePost from "./MakePost";
@@ -42,20 +43,11 @@ function PersonalProfile() {
   }, []);
 
   if (loading) {
-    return (
-      <div className="spinner">
-        <Spinner animation="grow" variant="secondary" />
-        Loading...
-      </div>
-    );
+    return <DisplaySpinner />;
   }
 
   if (error) {
-    return (
-      <Alert variant="danger" className="alert_msg">
-        ERROR: An error occured, please try again
-      </Alert>
-    );
+    return <DisplayError type="danger" content="ERROR: An error occured" />;
   }
 
   return (

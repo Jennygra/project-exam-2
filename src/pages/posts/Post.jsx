@@ -1,17 +1,13 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import useAxios from "../../context/useAxios";
-import AuthContext from "../../context/authContext";
+import { useAxios, AuthContext } from "../../context/index";
 import { POSTS_PATH } from "../../data/Api";
-import { Spinner, Button, Alert } from "react-bootstrap";
-import GetComment from "./GetComment";
-import AddComment from "./AddComment";
-import EditPost from "./EditPost";
-import ReactPost from "./ReactPost";
-import checkImg from "../../utilities/CheckImg";
+import { DisplaySpinner, DisplayError } from "../../components/index";
+import { Button } from "react-bootstrap";
+import { GetComment, AddComment, EditPost, ReactPost } from "./index";
+import { checkImg, FormatDate } from "../../utilities/index";
 import defaultPostImg from "../../images/no-img.jpg";
 import defaultProfileImg from "../../images/default-user-img.jpg";
-import FormatDate from "../../utilities/FormatDate";
 
 function Post() {
   const [post, setPost] = useState([]);
@@ -46,20 +42,11 @@ function Post() {
   }, []);
 
   if (loading) {
-    return (
-      <div className="spinner">
-        <Spinner animation="grow" variant="secondary" />
-        Loading...
-      </div>
-    );
+    return <DisplaySpinner />;
   }
 
   if (error) {
-    return (
-      <Alert variant="danger" className="alert_msg">
-        ERROR: An error occured
-      </Alert>
-    );
+    return <DisplayError type="danger" content="ERROR: An error occured" />;
   }
 
   if (auth.name === post.author.name) {

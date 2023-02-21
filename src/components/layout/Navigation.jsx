@@ -1,5 +1,5 @@
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
-import { NavLink, useNavigate, Link } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import AuthContext from "../../context/authContext";
 import checkImg from "../../utilities/CheckImg";

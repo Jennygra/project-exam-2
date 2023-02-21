@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import AuthContext from "../context/authContext";
-import useAxios from "../context/useAxios";
+import { AuthContext, useAxios } from "../context/index";
 import { BASE_URL, PROFILE_PATH } from "../data/Api";
 import { Button } from "react-bootstrap";
 

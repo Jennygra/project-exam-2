@@ -3,8 +3,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../context/useAxios";
 import { PROFILE_PATH } from "../../data/Api";
 import ProfilePosts from "./ProfilePosts";
-import FollowUnfollowBtn from "../../components/FollowUnfollowBtn";
-import { Spinner, Alert } from "react-bootstrap";
+import {
+  FollowUnfollowBtn,
+  DisplayError,
+  DisplaySpinner,
+} from "../../components/index";
 import checkImg from "../../utilities/CheckImg";
 import defaultProfileImg from "../../images/default-user-img.jpg";
 import defaultBannerImg from "../../images/no-img.jpg";
@@ -39,20 +42,11 @@ function Profile() {
   }, []);
 
   if (loading) {
-    return (
-      <div className="spinner">
-        <Spinner animation="grow" variant="secondary" />
-        Loading...
-      </div>
-    );
+    return <DisplaySpinner />;
   }
 
   if (error) {
-    return (
-      <Alert variant="danger" className="alert_msg">
-        ERROR: An error occured
-      </Alert>
-    );
+    return <DisplayError type="danger" content="ERROR: An error occured" />;
   }
 
   return (

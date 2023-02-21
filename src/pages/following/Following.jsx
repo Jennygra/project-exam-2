@@ -1,10 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import AuthContext from "../../context/authContext";
-import useAxios from "../../context/useAxios";
+import { AuthContext, useAxios } from "../../context/index";
 import { PROFILE_PATH } from "../../data/Api";
-import { Alert, Spinner } from "react-bootstrap";
-import DisplayUsers from "../../components/DisplayUsers";
+import {
+  DisplaySpinner,
+  DisplayUsers,
+  DisplayError,
+} from "../../components/index";
+import { Alert } from "react-bootstrap";
 
 function Following() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -31,20 +34,11 @@ function Following() {
   }, []);
 
   if (loading) {
-    return (
-      <div className="spinner">
-        <Spinner animation="grow" variant="secondary" />
-        Loading...
-      </div>
-    );
+    return <DisplaySpinner />;
   }
 
   if (error) {
-    return (
-      <Alert variant="danger" className="alert_msg">
-        ERROR: An error occured
-      </Alert>
-    );
+    return <DisplayError type="danger" content="ERROR: An error occured" />;
   }
 
   if (profile.following.length === 0) {

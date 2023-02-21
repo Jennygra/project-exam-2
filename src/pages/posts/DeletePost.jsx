@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import useAxios from "../../context/useAxios";
-import AuthContext from "../../context/authContext";
+import { useAxios, AuthContext } from "../../context/index";
 import { BASE_URL, POSTS_PATH } from "../../data/Api";
 import { Button } from "react-bootstrap";
 

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import useAxios from "../../context/useAxios";
 import { POSTS_PATH } from "../../data/Api";
-import DisplayPost from "./DisplayPosts";
-import { Spinner, Alert } from "react-bootstrap";
+import { DisplaySpinner, DisplayError } from "../../components/index";
+import { Alert } from "react-bootstrap";
 import checkImg from "../../utilities/CheckImg";
 import img from "../../images/no-img.jpg";
 
@@ -28,20 +28,11 @@ function FollowedProfilePosts() {
   }, []);
 
   if (loading) {
-    return (
-      <div className="spinner">
-        <Spinner animation="grow" variant="secondary" />
-        Loading...
-      </div>
-    );
+    return <DisplaySpinner />;
   }
 
   if (error) {
-    return (
-      <Alert variant="danger" className="alert_msg">
-        ERROR: An error occured
-      </Alert>
-    );
+    return <DisplayError type="danger" content="ERROR: An error occured" />;
   }
 
   if (posts.length === 0) {

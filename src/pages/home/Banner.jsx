@@ -1,6 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import AuthContext from "../../context/authContext";
-import Card from "react-bootstrap/Card";
 
 function Banner() {
   const [auth, setAuth] = useContext(AuthContext);

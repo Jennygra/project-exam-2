@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { PROFILE_PATH } from "../../data/Api";
 import useAxios from "../../context/useAxios";
-import { Spinner, Alert } from "react-bootstrap";
+import { DisplaySpinner, DisplayError } from "../../components/index";
 import checkImg from "../../utilities/CheckImg";
 import img from "../../images/no-img.jpg";
 
@@ -30,20 +30,11 @@ function ProfilePosts() {
   }, []);
 
   if (loading) {
-    return (
-      <div className="spinner">
-        <Spinner animation="grow" variant="secondary" />
-        Loading...
-      </div>
-    );
+    return <DisplaySpinner />;
   }
 
   if (error) {
-    return (
-      <Alert variant="secondary" className="alert_msg">
-        ERROR: An error occured
-      </Alert>
-    );
+    return <DisplayError type="secondary" content="ERROR: An error occured" />;
   }
 
   if (profilePosts.length === 0) {

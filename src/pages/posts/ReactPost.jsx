@@ -8,7 +8,7 @@ function ReactPost(props) {
   const [counts, setCounts] = useState("");
 
   const reactionsCount = props.reactionCount;
-  const emojis = ["👍", "❤️", "😊", "🔥"];
+  const emojis = ["👍", "❤️", "🤣", "🔥"];
   const { id } = useParams();
   const http = useAxios();
   let sumCounts = 0;

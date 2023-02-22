@@ -13,7 +13,7 @@ const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
   media: yup.string().url(),
   body: yup.string(),
-  tags: yup.string(),
+  tags: yup.array().of(yup.string()),
 });
 
 function MakePost(props) {
@@ -23,8 +23,6 @@ function MakePost(props) {
 
   const url = BASE_URL + POSTS_PATH;
   const http = useAxios();
-
-  console.log("tags", tags);
 
   const {
     register,
@@ -39,8 +37,9 @@ function MakePost(props) {
     setMakePostError(null);
 
     try {
-      const response = await http.post(url, data);
-      // window.location.reload();
+      const postData = { ...data, tags: tags };
+      const response = await http.post(url, postData);
+      window.location.reload();
       console.log(response.data);
     } catch (error) {
       console.log("error", error);
@@ -94,7 +93,7 @@ function MakePost(props) {
 
             <Form.Group>
               <Form.Label>Tags</Form.Label>
-              <TagsInput tags={tags} setTags={setTags} {...register("tags")} />
+              <TagsInput tags={tags} setTags={setTags} />
               {errors.tags && (
                 <Alert variant="warning">{errors.tags.message}</Alert>
               )}

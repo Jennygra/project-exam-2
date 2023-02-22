@@ -12,6 +12,9 @@ import { Alert, Button, Form, Modal } from "react-bootstrap";
 
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
+  media: yup.string().url(),
+  body: yup.string(),
+  tags: yup.array().of(yup.string()),
 });
 
 function EditPost(props) {
@@ -48,7 +51,8 @@ function EditPost(props) {
     setUpdatePostError(null);
 
     try {
-      const response = await http.put(url, data);
+      const putData = { ...data, tags: tags };
+      const response = await http.put(url, putData);
       console.log("Update profile response", response.data);
       window.location.reload();
     } catch (error) {

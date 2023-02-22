@@ -5,20 +5,24 @@ function SearchBar({ posts, setSearchResults }) {
   const handleSubmit = (e) => e.preventDefault();
 
   const handleSearchChange = (e) => {
-    const inputValue = e.target.value.trim();
+    const inputValue = e.target?.value?.trim();
 
     if (!inputValue) {
       return setSearchResults(posts);
     }
 
-    const resultArray = posts.filter((post) => {
-      return (
-        post.id.toString().includes(inputValue) ||
-        post.title.includes(inputValue)
-      );
-    });
+    const delaySearch = setTimeout(() => {
+      const resultArray = posts.filter((post) => {
+        return (
+          post.id.toString().includes(inputValue) ||
+          post.title.includes(inputValue)
+        );
+      });
 
-    setSearchResults(resultArray);
+      setSearchResults(resultArray);
+    }, 500);
+
+    return () => clearTimeout(delaySearch);
   };
 
   return (

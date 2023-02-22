@@ -16,9 +16,9 @@ function Profiles() {
   useEffect(() => {
     (async function fetchData() {
       try {
-        const response = await http.get(PROFILE_PATH);
-        setProfiles(response.data);
-        setSearchResults(response.data);
+        const { data } = await http.get(PROFILE_PATH);
+        setProfiles(data);
+        setSearchResults(data);
       } catch (error) {
         setError(error.toString());
       } finally {

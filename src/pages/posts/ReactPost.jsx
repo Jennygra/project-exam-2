@@ -51,8 +51,8 @@ function ReactPost(props) {
       </i>
 
       <ul className={`menu-items ${menuOpen ? "open" : ""}`}>
-        {emojis.map((emoji) => (
-          <li className="menu-item" onClick={emojiClicked}>
+        {emojis.map((emoji, index) => (
+          <li className="menu-item" onClick={emojiClicked} key={index}>
             {emoji}
           </li>
         ))}

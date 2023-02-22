@@ -5,17 +5,21 @@ function ProfilesSearchBar({ profiles, setSearchResults }) {
   const handleSubmit = (e) => e.preventDefault();
 
   const handleSearchChange = (e) => {
-    const inputValue = e.target.value.trim().toLowerCase();
+    const inputValue = e.target?.value?.trim().toLowerCase();
 
     if (!inputValue) {
       return setSearchResults(profiles);
     }
 
-    const resultArray = profiles.filter((profile) => {
-      return profile.name.toString().toLowerCase().includes(inputValue);
-    });
+    const delaySearch = setTimeout(() => {
+      const resultArray = profiles.filter((profile) => {
+        return profile.name.toLowerCase().includes(inputValue);
+      });
 
-    setSearchResults(resultArray);
+      setSearchResults(resultArray);
+    }, 500);
+
+    return () => clearTimeout(delaySearch);
   };
 
   return (
@@ -26,6 +30,7 @@ function ProfilesSearchBar({ profiles, setSearchResults }) {
           placeholder="Search..."
           className="search__input"
           onChange={handleSearchChange}
+          id="serach-input"
         />
       </form>
     </>

@@ -105,7 +105,7 @@ function RegisterForm() {
           <div className="password-wrapper">
             <Form.Label>Password</Form.Label>
             <i
-              class="fa-regular fa-eye"
+              className="fa-regular fa-eye"
               onClick={togglePassword}
               aria-Label="Show password"
             />

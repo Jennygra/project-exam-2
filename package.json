@@ -18,10 +18,17 @@
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "jest": "^27.5.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "CI='' react-scripts build",
-    "test": "jest",
+    "test": "npm run test-unit",
+    "test-unit": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

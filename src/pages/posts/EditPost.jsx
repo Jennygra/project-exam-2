@@ -8,8 +8,6 @@ import { BASE_URL, POSTS_PATH } from "../../data/Api";
 import { TagsInput, DeletePost } from "./index";
 import { Alert, Button, Form, Modal } from "react-bootstrap";
 
-// This function let the auth user to edit their own post
-
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
   media: yup.string().url(),

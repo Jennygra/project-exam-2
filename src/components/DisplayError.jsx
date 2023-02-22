@@ -1,8 +1,12 @@
 import { Alert } from "react-bootstrap";
 
-// This component display an error message.
-// Props.content determined the message to users
-// Props.type determind the Bootstrap UI styling for this message
+/**
+ * Renders an error message with the specified content and type
+ * @param {object} props - The props object
+ * @param {string} props.type - The type of the alert variant
+ * @param {string} props.content - The content of the error message
+ * @returns {JSX.Element} The component for displaying the error message
+ */
 
 function DisplayError(props) {
   return (

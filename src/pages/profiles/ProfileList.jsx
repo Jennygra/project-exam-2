@@ -1,6 +1,12 @@
 import DisplayProfiles from "../../components/DisplayProfiles";
 import { Alert } from "react-bootstrap";
 
+/**
+ * @param {object} props - The props object containing the "searchResults" array
+ * @param {object} props.searchResults - An array of profile objects to be rendered
+ * @returns {JSX.Element} The JSX representation of the profile list component
+ */
+
 function ProfileList({ searchResults }) {
   const results = searchResults.map((profiles) => (
     <DisplayProfiles key={profiles.id} profiles={profiles} />

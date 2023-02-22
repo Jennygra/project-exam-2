@@ -1,7 +1,15 @@
 import { checkImg } from "../utilities/index";
 import img from "../images/no-img.jpg";
 
-// This components display post
+/**
+ * Render a component to display post
+ * @param {object} post - Object containing the post information
+ * @param {string} post.id - The post id
+ * @param {string} post.media - The URL of the post image
+ * @param {string} post.title - The title of the post
+ * @param {string} post.body - The body of the post
+ * @returns {JSX.Element} - A component displaying the post image, title, id and body
+ */
 
 const DisplayPosts = ({ post }) => {
   return (

@@ -1,7 +1,12 @@
 import React from "react";
 import useLocalStorage from "../hooks/localStorage/uesLocalStorage";
 
-// This function defining an authentication context and store it in Local Storage
+/**
+ * The authentication contect for the application
+ * @typedef {object} AuthContext
+ * @property {*} value - The value of the authentication context
+ * @property {Function} Provider - A provider component that provides the authentication context to its children
+ */
 
 const AuthContext = React.createContext([null, () => {}]);
 

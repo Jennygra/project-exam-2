@@ -6,8 +6,6 @@ import { DisplaySpinner, DisplayError } from "../../components/index";
 import checkImg from "../../utilities/CheckImg";
 import defaultProfileImg from "../../images/default-user-img.jpg";
 
-// This function gets all the comment on one post
-
 function GetComment() {
   const [comment, setComment] = useState([]);
   const [loading, setLoading] = useState(true);

@@ -12,8 +12,6 @@ import checkImg from "../../utilities/CheckImg";
 import defaultProfileImg from "../../images/default-user-img.jpg";
 import defaultBannerImg from "../../images/no-img.jpg";
 
-// Profile details page
-
 function Profile() {
   const [profile, setProfile] = useState([]);
   const [loading, setLoading] = useState(true);

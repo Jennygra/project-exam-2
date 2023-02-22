@@ -9,8 +9,6 @@ import {
 } from "../../components/index";
 import { Alert } from "react-bootstrap";
 
-// Display who auth user follows
-
 function Following() {
   const [auth, setAuth] = useContext(AuthContext);
   const [profile, setProfile] = useState([]);
@@ -43,7 +41,6 @@ function Following() {
     return <DisplayError type="danger" content="ERROR: An error occured" />;
   }
 
-  //Checking if auth user follows other user, and display a message if there is no user
   if (profile.following.length === 0) {
     if (auth.name === name) {
       return (

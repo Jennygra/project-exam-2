@@ -1,6 +1,3 @@
-// Search function for profiles page
-// Find profile by name
-
 function ProfilesSearchBar({ profiles, setSearchResults }) {
   const handleSubmit = (e) => e.preventDefault();
 

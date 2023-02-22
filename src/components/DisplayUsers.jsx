@@ -2,8 +2,13 @@ import { Figure } from "react-bootstrap";
 import checkImg from "../utilities/CheckImg";
 import img from "../images/default-user-img.jpg";
 
-// This component display users
-// User details including profile picture and name.
+/**
+ * Render a component to display user profiles
+ * @param {object} profiles - Object containing the user profile information
+ * @param {string} prfiles.name - The users name
+ * @param {string} profiles.avatar - The URL of the users profile image
+ * @returns {JSX.Element} - A component displaying the users profile image and name
+ */
 
 const DisplayUsers = ({ profiles }) => {
   return (

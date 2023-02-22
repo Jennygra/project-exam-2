@@ -7,8 +7,6 @@ import useAxios from "../../context/useAxios";
 import { BASE_URL, POSTS_PATH } from "../../data/Api";
 import { Button, Form, Alert, Modal } from "react-bootstrap";
 
-// This function let the user to comment on any posts
-
 const schema = yup.object().shape({
   body: yup.string().required("Please write a comment"),
 });

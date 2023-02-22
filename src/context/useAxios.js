@@ -3,8 +3,10 @@ import axios from "axios";
 import AuthContext from "./authContext";
 import { BASE_URL } from "../data/Api";
 
-// A custom hook function that provides an Axios client with authentication headers, which contains the users access token for authentication
-// If no token, the header is set to an empty string
+/**
+ * A custom React hook that creates an Axious instance with an authentication token
+ * @returns {AxiosInstance} An Axios instance with an authentication token
+ */
 
 const url = BASE_URL;
 

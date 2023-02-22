@@ -5,6 +5,17 @@ import img from "../images/default-user-img.jpg";
 // This component display user profile
 // User profile details including profile picture, name, post, followers and following.
 
+/**
+ * Render a component to display user profiles
+ * @param {object} profiles - Object containing the user profile information
+ * @param {string} profiles.name - The users name
+ * @param {string} profiles.avatar - The URL of the users profile image
+ * @param {string} prfiles._count.posts - The total count of users posts
+ * @param {string} prfiles._count.followers - The total count of users followers
+ * @param {string} prfiles._count.following - The total count of users following
+ * @returns {JSX.Element} - A component displaying the users profile image, name, count of posts, followers and following
+ */
+
 const DisplayProfiles = ({ profiles }) => {
   return (
     <>

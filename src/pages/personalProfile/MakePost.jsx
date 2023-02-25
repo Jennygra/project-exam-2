@@ -38,7 +38,6 @@ function MakePost(props) {
       const postData = { ...data, tags: tags };
       const response = await http.post(url, postData);
       window.location.reload();
-      console.log(response.data);
     } catch (error) {
       console.log("error", error);
       setMakePostError(error.toString());

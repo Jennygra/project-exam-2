@@ -51,7 +51,6 @@ function EditPost(props) {
     try {
       const putData = { ...data, tags: tags };
       const response = await http.put(url, putData);
-      console.log("Update profile response", response.data);
       window.location.reload();
     } catch (error) {
       console.log("error", error);

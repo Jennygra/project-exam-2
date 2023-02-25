@@ -7,8 +7,6 @@ import useAxios from "../../context/useAxios";
 import { BASE_URL, PROFILE_PATH } from "../../data/Api";
 import { Button, Form, Alert, Modal } from "react-bootstrap";
 
-// This function let the user to edit banner and profile image
-
 const schema = yup.object().shape({
   avatar: yup.string().url(),
   banner: yup.string().url(),

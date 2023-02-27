@@ -1,4 +1,4 @@
-# AdD. - Project Exam 2
+# AdD. (Addie) - Project Exam 2
 
 ![image](https://www.linkpicture.com/q/Skjermbilde-2023-02-27-kl.09.07.13.png)
 

@@ -47,6 +47,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+## Gantt Chart
+
+[Gantt-chart](https://view.monday.com/1157635304-a9e1a75484c64cf80725e22437b078b2?r=euc1)
+
+## Kanban Board
+
+[Kanban-board](https://trello.com/invite/b/g7jRwL1X/ATTI01d98f979e3be7c2f700a799f1108e74E047B7E5/kanban-board)
+
 ## Style Guide
 
 [Style-guide](https://xd.adobe.com/view/623cc6b3-d5d1-4cca-bcfa-be4643c22b04-376f/)

@@ -49,15 +49,15 @@ You may also see any lint errors in the console.
 
 ## Style Guide
 
-[Styleguide-link] (https://xd.adobe.com/view/623cc6b3-d5d1-4cca-bcfa-be4643c22b04-376f/)
+[Styleguide-link](https://xd.adobe.com/view/623cc6b3-d5d1-4cca-bcfa-be4643c22b04-376f/)
 
 ## Design Prototype
 
-[Prototype-link] (https://xd.adobe.com/view/b67d856d-40f0-4fd5-af46-9fbd2907867b-e32e/)
+[Prototype-link](https://xd.adobe.com/view/b67d856d-40f0-4fd5-af46-9fbd2907867b-e32e/)
 
 ## Hosted Demo
 
-[Demo-link] (https://cheerful-treacle-21b1ed.netlify.app)
+[Demo-link](https://cheerful-treacle-21b1ed.netlify.app)
 
 ## Contact
 

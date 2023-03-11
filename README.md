@@ -69,7 +69,7 @@ You may also see any lint errors in the console.
 
 ## Contact
 
-[Portfolio](https://comforting-parfait-fe7cbf.netlify.app/index.html)
+[Portfolio](https://jenny-gramdal-portfolio.netlify.app)
 
 [Twitter](https://twitter.com/jennyjen_gra)
 
